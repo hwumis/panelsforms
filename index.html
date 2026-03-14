@@ -207,7 +207,7 @@
 
   <div id="formView" class="form-view">
     <div class="form-toolbar">
-      <button id="homeButton" class="home-button" type="button">Home</button>
+      <button id="homeButton" class="home-button" type="button">Return to Menu</button>
       <div id="statusText" class="status-text">Returns to menu after inactivity</div>
     </div>
 
@@ -243,7 +243,7 @@
       formFrame.src = "about:blank";
       formView.style.display = "none";
       menuView.style.display = "flex";
-      statusText.textContent = "Returns to menu after inactivity";
+      statusText.textContent = "This page automatically returns to the menu after two minutes of inactivity";
     }
 
     function showForm(url) {
