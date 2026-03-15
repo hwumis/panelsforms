@@ -1,291 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panels Quality Forms</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panels Quality Forms</title>
 
-  <style>
-    :root {
-      --header-bg: #1b2a36;
-      --page-bg: #f4f4f4;
-      --button-bg: #3a6ea5;
-      --button-bg-hover: #2f5b89;
-      --text-dark: #111;
-      --text-light: #fff;
-      --home-bg: #d32f2f;
-      --home-bg-hover: #b71c1c;
-    }
+<style>
 
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+:root{
+--header-bg:#1b2a36;
+--page-bg:#f4f4f4;
+--button-bg:#3a6ea5;
+--button-hover:#2f5b89;
+--home-bg:#d32f2f;
+--home-hover:#b71c1c;
+}
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--page-bg);
-      overflow: hidden;
-    }
+*{
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
 
-    body {
-      display: flex;
-      flex-direction: column;
-    }
+html,body{
+margin:0;
+height:100%;
+font-family:Arial, Helvetica, sans-serif;
+background:var(--page-bg);
+overflow:hidden;
+}
 
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      background: var(--header-bg);
-      color: var(--text-light);
-      padding: 18px 32px;
-      min-height: 128px;
-    }
+body{
+display:flex;
+flex-direction:column;
+}
 
-    .logo {
-      height: 100px;   /* keeps your 2048x493 image proportional */
-      width: auto;
-      max-width: 48%;
-      object-fit: contain;
-      display: block;
-    }
+.header{
+display:grid;
+grid-template-columns:1fr auto 1fr;
+align-items:center;
+background:var(--header-bg);
+color:white;
+padding:20px 32px;
+min-height:130px;
+}
 
-    .title {
-      font-size: 52px;
-      font-weight: 700;
-      line-height: 1.1;
-      text-align: right;
-      white-space: nowrap;
-      flex: 1;
-    }
+.clock-wrap{
+justify-self:start;
+line-height:1.1;
+}
 
-    .menu-view,
-    .form-view {
-      flex: 1;
-      min-height: 0;
-    }
+.clock-date{
+font-size:24px;
+font-weight:600;
+}
 
-    .menu-view {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 28px 32px 36px;
-      overflow: auto;
-    }
+.clock-time{
+font-size:36px;
+font-weight:700;
+margin-top:4px;
+}
 
-    .subtext {
-      font-size: 28px;
-      color: var(--text-dark);
-      margin: 8px 0 28px;
-      text-align: center;
-    }
+.logo-wrap{
+justify-self:center;
+}
 
-    .button-container {
-      width: min(1100px, 92%);
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 22px;
-    }
+.logo{
+height:100px;
+width:auto;
+}
 
-    .menu-button {
-      width: 100%;
-      min-height: 96px;
-      border: none;
-      border-radius: 14px;
-      background: var(--button-bg);
-      color: var(--text-light);
-      font-size: 38px;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 24px 28px;
-      text-align: center;
-    }
+.title{
+justify-self:end;
+font-size:52px;
+font-weight:700;
+white-space:nowrap;
+}
 
-    .menu-button:hover,
-    .menu-button:focus {
-      background: var(--button-bg-hover);
-      outline: none;
-    }
+.menu-view{
+flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:30px;
+overflow:auto;
+}
 
-    .form-view {
-      display: none;
-      flex-direction: column;
-      padding: 16px 20px 20px;
-      gap: 14px;
-      background: var(--page-bg);
-    }
+.subtext{
+font-size:28px;
+margin-bottom:30px;
+}
 
-    .form-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
+.button-container{
+width:min(1100px,90%);
+display:grid;
+gap:22px;
+}
 
-    .home-button {
-      border: none;
-      border-radius: 12px;
-      background: var(--home-bg);
-      color: #fff;
-      font-size: 28px;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 16px 28px;
-      min-height: 68px;
-    }
+.menu-button{
+width:100%;
+min-height:100px;
+font-size:38px;
+font-weight:700;
+border:none;
+border-radius:14px;
+background:var(--button-bg);
+color:white;
+cursor:pointer;
+}
 
-    .home-button:hover,
-    .home-button:focus {
-      background: var(--home-bg-hover);
-      outline: none;
-    }
+.menu-button:hover{
+background:var(--button-hover);
+}
 
-    .status-text {
-      font-size: 22px;
-      color: #333;
-      text-align: right;
-      flex: 1;
-    }
+.form-view{
+display:none;
+flex-direction:column;
+flex:1;
+padding:16px;
+gap:14px;
+}
 
-    .iframe-wrap {
-      flex: 1;
-      min-height: 0;
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
-    }
+.form-toolbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
 
-    .form-frame {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-      background: #fff;
-    }
+.home-button{
+font-size:28px;
+font-weight:700;
+padding:16px 28px;
+border:none;
+border-radius:12px;
+background:var(--home-bg);
+color:white;
+cursor:pointer;
+}
 
-    @media (max-width: 1200px) {
-      .title {
-        font-size: 42px;
-      }
+.home-button:hover{
+background:var(--home-hover);
+}
 
-      .logo {
-        height: 84px;
-      }
+.status-text{
+font-size:22px;
+}
 
-      .menu-button {
-        font-size: 32px;
-      }
-    }
-  </style>
+.iframe-wrap{
+flex:1;
+border-radius:12px;
+overflow:hidden;
+background:white;
+}
+
+.form-frame{
+width:100%;
+height:100%;
+border:none;
+}
+
+</style>
 </head>
+
 <body>
-  <div class="header">
-    <img src="logo.png" alt="Highwood logo" class="logo" />
-    <div class="title">Panels Quality Forms</div>
-  </div>
 
-  <div id="menuView" class="menu-view">
-    <div class="subtext">Tap the form below to begin</div>
+<div class="header">
 
-    <div class="button-container">
-      <button class="menu-button" data-form="https://forms.office.com/r/9CZw0TZKFN">Forms Link #1</button>
-      <button class="menu-button" data-form="https://forms.office.com/r/9CZw0TZKFN">Forms Link #2</button>
-      <button class="menu-button" data-form="https://forms.office.com/r/9CZw0TZKFN">Forms Link #3</button>
-      <button class="menu-button" data-form="https://forms.office.com/r/9CZw0TZKFN">Forms Link #4</button>
-      <button class="menu-button" data-form="https://forms.office.com/r/9CZw0TZKFN">Forms Link #5</button>
-      <button class="menu-button" data-form="https://forms.office.com/r/9CZw0TZKFN">Forms Link #6</button>
-    </div>
-  </div>
+<div class="clock-wrap">
+<div id="clockDate" class="clock-date"></div>
+<div id="clockTime" class="clock-time"></div>
+</div>
 
-  <div id="formView" class="form-view">
-    <div class="form-toolbar">
-      <button id="homeButton" class="home-button" type="button">Return to Menu</button>
-      <div id="statusText" class="status-text">Returns to menu after inactivity</div>
-    </div>
+<div class="logo-wrap">
+<img src="logo.png" class="logo">
+</div>
 
-    <div class="iframe-wrap">
-      <iframe
-        id="formFrame"
-        class="form-frame"
-        title="Microsoft Form"
-        src="about:blank"
-        allowfullscreen
-        webkitallowfullscreen
-        mozallowfullscreen
-        msallowfullscreen>
-      </iframe>
-    </div>
-  </div>
+<div class="title">Panels Quality Forms</div>
 
-  <script>
-    const menuView = document.getElementById("menuView");
-    const formView = document.getElementById("formView");
-    const formFrame = document.getElementById("formFrame");
-    const homeButton = document.getElementById("homeButton");
-    const statusText = document.getElementById("statusText");
-    const menuButtons = document.querySelectorAll(".menu-button");
+</div>
 
-    // Change this to whatever you want.
-    const RETURN_TO_MENU_MS = 120000; // 120 seconds
+<div id="menuView" class="menu-view">
 
-    let inactivityTimer = null;
+<div class="subtext">Tap the form below to begin</div>
 
-    function showMenu() {
-      clearInactivityTimer();
-      formFrame.src = "about:blank";
-      formView.style.display = "none";
-      menuView.style.display = "flex";
-      statusText.textContent = "This page automatically returns to the menu after two minutes of inactivity";
-    }
+<div class="button-container">
 
-    function showForm(url) {
-      menuView.style.display = "none";
-      formView.style.display = "flex";
-      formFrame.src = url;
-      resetInactivityTimer();
-    }
+<button class="menu-button" data-form="FORM_LINK_1">Forms Link #1</button>
+<button class="menu-button" data-form="FORM_LINK_2">Forms Link #2</button>
+<button class="menu-button" data-form="FORM_LINK_3">Forms Link #3</button>
+<button class="menu-button" data-form="FORM_LINK_4">Forms Link #4</button>
+<button class="menu-button" data-form="FORM_LINK_5">Forms Link #5</button>
+<button class="menu-button" data-form="FORM_LINK_6">Forms Link #6</button>
 
-    function clearInactivityTimer() {
-      if (inactivityTimer) {
-        clearTimeout(inactivityTimer);
-        inactivityTimer = null;
-      }
-    }
+</div>
 
-    function resetInactivityTimer() {
-      clearInactivityTimer();
-      inactivityTimer = setTimeout(() => {
-        showMenu();
-      }, RETURN_TO_MENU_MS);
-    }
+</div>
 
-    // Reset timer on obvious activity on the parent page.
-    ["pointerdown", "pointermove", "keydown", "wheel", "touchstart"].forEach(evt => {
-      document.addEventListener(evt, () => {
-        if (formView.style.display === "flex") {
-          resetInactivityTimer();
-        }
-      }, { passive: true });
-    });
+<div id="formView" class="form-view">
 
-    homeButton.addEventListener("click", showMenu);
+<div class="form-toolbar">
+<button id="homeButton" class="home-button">Return to Menu</button>
+<div class="status-text">Returns to menu after inactivity</div>
+</div>
 
-    menuButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        const url = button.getAttribute("data-form");
-        showForm(url);
-      });
-    });
+<div class="iframe-wrap">
+<iframe id="formFrame" class="form-frame"></iframe>
+</div>
 
-    showMenu();
-  </script>
+</div>
+
+<script>
+
+const menuView=document.getElementById("menuView");
+const formView=document.getElementById("formView");
+const formFrame=document.getElementById("formFrame");
+const homeButton=document.getElementById("homeButton");
+const buttons=document.querySelectorAll(".menu-button");
+
+const RETURN_TO_MENU_MS=120000;
+
+let inactivityTimer=null;
+
+function showMenu(){
+clearTimeout(inactivityTimer);
+formFrame.src="about:blank";
+formView.style.display="none";
+menuView.style.display="flex";
+}
+
+function showForm(url){
+menuView.style.display="none";
+formView.style.display="flex";
+formFrame.src=url;
+resetTimer();
+}
+
+function resetTimer(){
+clearTimeout(inactivityTimer);
+inactivityTimer=setTimeout(showMenu,RETURN_TO_MENU_MS);
+}
+
+["pointerdown","pointermove","touchstart","keydown"].forEach(evt=>{
+document.addEventListener(evt,()=>{
+if(formView.style.display==="flex"){
+resetTimer();
+}
+},{passive:true});
+});
+
+homeButton.addEventListener("click",showMenu);
+
+buttons.forEach(btn=>{
+btn.addEventListener("click",()=>{
+showForm(btn.dataset.form);
+});
+});
+
+function updateClock(){
+const now=new Date();
+
+const dateText=now.toLocaleDateString(undefined,{
+weekday:"short",
+year:"numeric",
+month:"short",
+day:"numeric"
+});
+
+const timeText=now.toLocaleTimeString(undefined,{
+hour:"numeric",
+minute:"2-digit"
+});
+
+document.getElementById("clockDate").textContent=dateText;
+document.getElementById("clockTime").textContent=timeText;
+}
+
+updateClock();
+setInterval(updateClock,1000);
+
+showMenu();
+
+</script>
+
 </body>
 </html>
