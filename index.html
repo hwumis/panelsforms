@@ -141,10 +141,6 @@ cursor:pointer;
 background:var(--home-hover);
 }
 
-.status-text{
-font-size:22px;
-}
-
 .iframe-wrap{
 flex:1;
 border-radius:12px;
@@ -196,7 +192,6 @@ border:none;
 
 <div class="form-toolbar">
 <button id="homeButton" class="home-button">Return to Menu</button>
-<div class="status-text">Returns to menu after inactivity</div>
 </div>
 
 <div class="iframe-wrap">
@@ -213,12 +208,7 @@ const formFrame=document.getElementById("formFrame");
 const homeButton=document.getElementById("homeButton");
 const buttons=document.querySelectorAll(".menu-button");
 
-const RETURN_TO_MENU_MS=120000;
-
-let inactivityTimer=null;
-
 function showMenu(){
-clearTimeout(inactivityTimer);
 formFrame.src="about:blank";
 formView.style.display="none";
 menuView.style.display="flex";
@@ -228,21 +218,7 @@ function showForm(url){
 menuView.style.display="none";
 formView.style.display="flex";
 formFrame.src=url;
-resetTimer();
 }
-
-function resetTimer(){
-clearTimeout(inactivityTimer);
-inactivityTimer=setTimeout(showMenu,RETURN_TO_MENU_MS);
-}
-
-["pointerdown","pointermove","touchstart","keydown"].forEach(evt=>{
-document.addEventListener(evt,()=>{
-if(formView.style.display==="flex"){
-resetTimer();
-}
-},{passive:true});
-});
 
 homeButton.addEventListener("click",showMenu);
 
