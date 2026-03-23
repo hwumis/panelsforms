@@ -207,6 +207,8 @@ const formView=document.getElementById("formView");
 const formFrame=document.getElementById("formFrame");
 const homeButton=document.getElementById("homeButton");
 const buttons=document.querySelectorAll(".menu-button");
+const clockDate=document.getElementById("clockDate");
+const clockTime=document.getElementById("clockTime");
 
 function showMenu(){
 formFrame.src="about:blank";
@@ -228,23 +230,36 @@ showForm(btn.dataset.form);
 });
 });
 
+function formatUSDate(now){
+const weekdays=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+const weekday=weekdays[now.getDay()];
+const month=months[now.getMonth()];
+const day=now.getDate();
+const year=now.getFullYear();
+
+return `${weekday}, ${month} ${day}, ${year}`;
+}
+
+function formatUSTime(now){
+let hours=now.getHours();
+const minutes=String(now.getMinutes()).padStart(2,"0");
+const ampm=hours>=12 ? "PM" : "AM";
+
+hours=hours%12;
+if(hours===0){
+hours=12;
+}
+
+return `${hours}:${minutes} ${ampm}`;
+}
+
 function updateClock(){
 const now=new Date();
 
-const dateText=now.toLocaleDateString(undefined,{
-weekday:"short",
-year:"numeric",
-month:"short",
-day:"numeric"
-});
-
-const timeText=now.toLocaleTimeString(undefined,{
-hour:"numeric",
-minute:"2-digit"
-});
-
-document.getElementById("clockDate").textContent=dateText;
-document.getElementById("clockTime").textContent=timeText;
+clockDate.textContent=formatUSDate(now);
+clockTime.textContent=formatUSTime(now);
 }
 
 updateClock();
