@@ -14,6 +14,9 @@
 --button-hover:#2f5b89;
 --home-bg:#d32f2f;
 --home-hover:#b71c1c;
+--guide-bg:#2e7d32;
+--guide-hover:#256628;
+--modal-bg:rgba(0,0,0,0.72);
 }
 
 *{
@@ -123,22 +126,45 @@ gap:14px;
 .form-toolbar{
 display:flex;
 justify-content:space-between;
-align-items:center;
+align-items:flex-start;
+gap:16px;
+flex-wrap:wrap;
 }
 
-.home-button{
-font-size:28px;
+.toolbar-left,
+.toolbar-right{
+display:flex;
+align-items:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.home-button,
+.guide-button,
+.modal-close{
+font-size:24px;
 font-weight:700;
-padding:16px 28px;
+padding:14px 22px;
 border:none;
 border-radius:12px;
-background:var(--home-bg);
 color:white;
 cursor:pointer;
 }
 
+.home-button{
+background:var(--home-bg);
+}
+
 .home-button:hover{
 background:var(--home-hover);
+}
+
+.guide-button{
+background:var(--guide-bg);
+}
+
+.guide-button:hover{
+background:var(--guide-hover);
 }
 
 .iframe-wrap{
@@ -146,12 +172,120 @@ flex:1;
 border-radius:12px;
 overflow:hidden;
 background:white;
+position:relative;
 }
 
 .form-frame{
 width:100%;
 height:100%;
 border:none;
+}
+
+/* Modal */
+.modal{
+display:none;
+position:fixed;
+inset:0;
+z-index:9999;
+background:var(--modal-bg);
+padding:20px;
+}
+
+.modal.open{
+display:flex;
+}
+
+.modal-content{
+width:100%;
+height:100%;
+background:white;
+border-radius:16px;
+overflow:hidden;
+display:flex;
+flex-direction:column;
+box-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
+
+.modal-toolbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:16px;
+padding:16px 20px;
+background:#f2f2f2;
+border-bottom:1px solid #d8d8d8;
+}
+
+.modal-title{
+font-size:30px;
+font-weight:700;
+color:#222;
+}
+
+.modal-close{
+background:#444;
+}
+
+.modal-close:hover{
+background:#222;
+}
+
+.modal-frame{
+flex:1;
+width:100%;
+border:none;
+background:white;
+}
+
+@media (max-width: 1200px){
+.title{
+font-size:40px;
+}
+}
+
+@media (max-width: 900px){
+.header{
+grid-template-columns:1fr;
+justify-items:center;
+text-align:center;
+gap:10px;
+padding:16px 20px;
+}
+
+.clock-wrap,
+.logo-wrap,
+.title{
+justify-self:center;
+}
+
+.title{
+font-size:30px;
+white-space:normal;
+}
+
+.clock-date{
+font-size:20px;
+}
+
+.clock-time{
+font-size:30px;
+}
+
+.menu-button{
+font-size:30px;
+min-height:88px;
+}
+
+.home-button,
+.guide-button,
+.modal-close{
+font-size:20px;
+padding:12px 18px;
+}
+
+.modal-title{
+font-size:22px;
+}
 }
 
 </style>
@@ -167,7 +301,7 @@ border:none;
 </div>
 
 <div class="logo-wrap">
-<img src="logo3.png" class="logo">
+<img src="logo3.png" class="logo" alt="Logo">
 </div>
 
 <div class="title">Panels Quality Forms</div>
@@ -181,8 +315,11 @@ border:none;
 <div class="button-container">
 
 <button class="menu-button" data-form="https://forms.office.com/Pages/ResponsePage.aspx?Host=Teams&lang=%7Blocale%7D&groupId=%7BgroupId%7D&tid=%7Btid%7D&teamsTheme=%7Btheme%7D&upn=%7Bupn%7D&id=IgJUilauPEGR1SrfPab0L_vA7N9uOiBPqIiXOOKCS49UQlVQTFRCQzdYWDMzRkkxMjdWTjlESUdDNy4u">Panels Fab - Build</button>
+
 <button class="menu-button" data-form="https://forms.office.com/Pages/ResponsePage.aspx?Host=Teams&lang={locale}&groupId={groupId}&tid={tid}&teamsTheme={theme}&upn={upn}&id=IgJUilauPEGR1SrfPab0L_vA7N9uOiBPqIiXOOKCS49UM081UTRPWkYzWTRXSEo3VUdaME5JRldJNy4u">Panels Fab - Build Corners</button>
+
 <button class="menu-button" data-form="https://forms.office.com/Pages/ResponsePage.aspx?Host=Teams&lang={locale}&groupId={groupId}&tid={tid}&teamsTheme={theme}&upn={upn}&id=IgJUilauPEGR1SrfPab0L_vA7N9uOiBPqIiXOOKCS49UNTBQV0pJQ0FHTDUzQ01EQklONEdKVTI5Mi4u">Panels Fab - CNC</button>
+
 <button class="menu-button" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsBuild/formperma/DsANxGcHEdMFUn6xKEgIk3vXzqLdKq7kbSWIperZPVg">TEST</button>
 
 </div>
@@ -192,7 +329,15 @@ border:none;
 <div id="formView" class="form-view">
 
 <div class="form-toolbar">
+<div class="toolbar-left">
 <button id="homeButton" class="home-button">Return to Menu</button>
+</div>
+
+<div class="toolbar-right">
+<button class="guide-button" data-guide="https://YOUR-GITHUB-PAGES-URL/lamination.html">Buildtable Appearance Defects: Lamination</button>
+<button class="guide-button" data-guide="https://YOUR-GITHUB-PAGES-URL/appearance.html">Buildtable Appearance Defects: Appearance</button>
+<button class="guide-button" data-guide="https://YOUR-GITHUB-PAGES-URL/dimensional.html">Buildtable Appearance Defects: Dimensional</button>
+</div>
 </div>
 
 <div class="iframe-wrap">
@@ -201,70 +346,118 @@ border:none;
 
 </div>
 
+<div id="guideModal" class="modal" aria-hidden="true">
+<div class="modal-content">
+<div class="modal-toolbar">
+<div id="modalTitle" class="modal-title">Defect Guide</div>
+<button id="closeGuideButton" class="modal-close">Close Guide</button>
+</div>
+<iframe id="guideFrame" class="modal-frame" src="about:blank"></iframe>
+</div>
+</div>
+
 <script>
 
-const menuView=document.getElementById("menuView");
-const formView=document.getElementById("formView");
-const formFrame=document.getElementById("formFrame");
-const homeButton=document.getElementById("homeButton");
-const buttons=document.querySelectorAll(".menu-button");
-const clockDate=document.getElementById("clockDate");
-const clockTime=document.getElementById("clockTime");
+const menuView = document.getElementById("menuView");
+const formView = document.getElementById("formView");
+const formFrame = document.getElementById("formFrame");
+const homeButton = document.getElementById("homeButton");
+const buttons = document.querySelectorAll(".menu-button");
+const guideButtons = document.querySelectorAll(".guide-button");
+const guideModal = document.getElementById("guideModal");
+const guideFrame = document.getElementById("guideFrame");
+const closeGuideButton = document.getElementById("closeGuideButton");
+const modalTitle = document.getElementById("modalTitle");
+const clockDate = document.getElementById("clockDate");
+const clockTime = document.getElementById("clockTime");
 
 function showMenu(){
-formFrame.src="about:blank";
-formView.style.display="none";
-menuView.style.display="flex";
+closeGuide();
+formFrame.src = "about:blank";
+formView.style.display = "none";
+menuView.style.display = "flex";
 }
 
 function showForm(url){
-menuView.style.display="none";
-formView.style.display="flex";
-formFrame.src=url;
+menuView.style.display = "none";
+formView.style.display = "flex";
+formFrame.src = url;
 }
 
-homeButton.addEventListener("click",showMenu);
+function openGuide(url, titleText){
+guideFrame.src = url;
+modalTitle.textContent = titleText;
+guideModal.classList.add("open");
+guideModal.setAttribute("aria-hidden", "false");
+}
 
-buttons.forEach(btn=>{
-btn.addEventListener("click",()=>{
+function closeGuide(){
+guideModal.classList.remove("open");
+guideModal.setAttribute("aria-hidden", "true");
+guideFrame.src = "about:blank";
+}
+
+homeButton.addEventListener("click", showMenu);
+
+buttons.forEach(btn => {
+btn.addEventListener("click", () => {
 showForm(btn.dataset.form);
 });
 });
 
-function formatUSDate(now){
-const weekdays=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+guideButtons.forEach(btn => {
+btn.addEventListener("click", () => {
+openGuide(btn.dataset.guide, btn.textContent.trim());
+});
+});
 
-const weekday=weekdays[now.getDay()];
-const month=months[now.getMonth()];
-const day=now.getDate();
-const year=now.getFullYear();
+closeGuideButton.addEventListener("click", closeGuide);
+
+guideModal.addEventListener("click", (e) => {
+if(e.target === guideModal){
+closeGuide();
+}
+});
+
+document.addEventListener("keydown", (e) => {
+if(e.key === "Escape" && guideModal.classList.contains("open")){
+closeGuide();
+}
+});
+
+function formatUSDate(now){
+const weekdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+const weekday = weekdays[now.getDay()];
+const month = months[now.getMonth()];
+const day = now.getDate();
+const year = now.getFullYear();
 
 return `${weekday}, ${month} ${day}, ${year}`;
 }
 
 function formatUSTime(now){
-let hours=now.getHours();
-const minutes=String(now.getMinutes()).padStart(2,"0");
-const ampm=hours>=12 ? "PM" : "AM";
+let hours = now.getHours();
+const minutes = String(now.getMinutes()).padStart(2,"0");
+const ampm = hours >= 12 ? "PM" : "AM";
 
-hours=hours%12;
-if(hours===0){
-hours=12;
+hours = hours % 12;
+if(hours === 0){
+hours = 12;
 }
 
 return `${hours}:${minutes} ${ampm}`;
 }
 
 function updateClock(){
-const now=new Date();
-
-clockDate.textContent=formatUSDate(now);
-clockTime.textContent=formatUSTime(now);
+const now = new Date();
+clockDate.textContent = formatUSDate(now);
+clockTime.textContent = formatUSTime(now);
 }
 
 updateClock();
-setInterval(updateClock,1000);
+setInterval(updateClock, 1000);
 
 showMenu();
 
