@@ -16,7 +16,7 @@
 --home-hover:#b71c1c;
 --guide-bg:#2e7d32;
 --guide-hover:#256628;
---modal-bg:rgba(0,0,0,0.72);
+--modal-bg:rgba(0,0,0,0.7);
 }
 
 *{
@@ -37,6 +37,7 @@ display:flex;
 flex-direction:column;
 }
 
+/* HEADER */
 .header{
 display:grid;
 grid-template-columns:1fr auto 1fr;
@@ -49,43 +50,34 @@ min-height:130px;
 
 .clock-wrap{
 justify-self:start;
-line-height:1.1;
 }
 
 .clock-date{
 font-size:24px;
-font-weight:600;
 }
 
 .clock-time{
 font-size:36px;
 font-weight:700;
-margin-top:4px;
-}
-
-.logo-wrap{
-justify-self:center;
 }
 
 .logo{
 height:100px;
-width:auto;
 }
 
 .title{
 justify-self:end;
-font-size:52px;
+font-size:48px;
 font-weight:700;
-white-space:nowrap;
 }
 
+/* MENU */
 .menu-view{
 flex:1;
 display:flex;
 flex-direction:column;
 align-items:center;
 padding:30px;
-overflow:auto;
 }
 
 .subtext{
@@ -96,13 +88,13 @@ margin-bottom:30px;
 .button-container{
 width:min(1100px,90%);
 display:grid;
-gap:22px;
+gap:20px;
 }
 
 .menu-button{
 width:100%;
 min-height:100px;
-font-size:38px;
+font-size:36px;
 font-weight:700;
 border:none;
 border-radius:14px;
@@ -115,44 +107,38 @@ cursor:pointer;
 background:var(--button-hover);
 }
 
+/* FORM VIEW */
 .form-view{
 display:none;
 flex-direction:column;
 flex:1;
 padding:16px;
-gap:14px;
+gap:12px;
 }
 
 .form-toolbar{
 display:flex;
 justify-content:space-between;
 align-items:flex-start;
-gap:16px;
-flex-wrap:wrap;
-}
-
-.toolbar-left,
-.toolbar-right{
-display:flex;
-align-items:center;
 gap:12px;
 flex-wrap:wrap;
 }
 
-.home-button,
-.guide-button,
-.modal-close{
-font-size:24px;
-font-weight:700;
+.toolbar-right{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+/* BUTTONS */
+.home-button{
+background:var(--home-bg);
+color:white;
 padding:14px 22px;
 border:none;
 border-radius:12px;
-color:white;
-cursor:pointer;
-}
-
-.home-button{
-background:var(--home-bg);
+font-size:22px;
+font-weight:700;
 }
 
 .home-button:hover{
@@ -161,18 +147,24 @@ background:var(--home-hover);
 
 .guide-button{
 background:var(--guide-bg);
+color:white;
+padding:12px 18px;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:700;
 }
 
 .guide-button:hover{
 background:var(--guide-hover);
 }
 
+/* FORM FRAME */
 .iframe-wrap{
 flex:1;
 border-radius:12px;
 overflow:hidden;
 background:white;
-position:relative;
 }
 
 .form-frame{
@@ -181,7 +173,7 @@ height:100%;
 border:none;
 }
 
-/* Modal */
+/* MODAL */
 .modal{
 display:none;
 position:fixed;
@@ -200,91 +192,52 @@ width:100%;
 height:100%;
 background:white;
 border-radius:16px;
-overflow:hidden;
 display:flex;
 flex-direction:column;
-box-shadow:0 10px 30px rgba(0,0,0,0.35);
+overflow:hidden;
 }
 
 .modal-toolbar{
 display:flex;
 justify-content:space-between;
 align-items:center;
-gap:16px;
-padding:16px 20px;
-background:#f2f2f2;
-border-bottom:1px solid #d8d8d8;
+padding:14px 20px;
+background:#f1f1f1;
 }
 
-.modal-title{
-font-size:30px;
-font-weight:700;
-color:#222;
-}
-
+/* 🔶 ORANGE CLOSE BUTTON */
 .modal-close{
-background:#444;
+background:#ff7a00;
+color:white;
+padding:12px 20px;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:700;
 }
 
 .modal-close:hover{
-background:#222;
+background:#e06600;
 }
 
 .modal-frame{
 flex:1;
 width:100%;
 border:none;
-background:white;
 }
 
-@media (max-width: 1200px){
-.title{
-font-size:40px;
-}
-}
-
+/* RESPONSIVE */
 @media (max-width: 900px){
-.header{
-grid-template-columns:1fr;
-justify-items:center;
-text-align:center;
-gap:10px;
-padding:16px 20px;
-}
-
-.clock-wrap,
-.logo-wrap,
 .title{
-justify-self:center;
-}
-
-.title{
-font-size:30px;
-white-space:normal;
-}
-
-.clock-date{
-font-size:20px;
-}
-
-.clock-time{
 font-size:30px;
 }
 
 .menu-button{
-font-size:30px;
-min-height:88px;
+font-size:28px;
 }
 
-.home-button,
-.guide-button,
-.modal-close{
-font-size:20px;
-padding:12px 18px;
-}
-
-.modal-title{
-font-size:22px;
+.guide-button{
+font-size:16px;
 }
 }
 
@@ -294,18 +247,14 @@ font-size:22px;
 <body>
 
 <div class="header">
-
 <div class="clock-wrap">
 <div id="clockDate" class="clock-date"></div>
 <div id="clockTime" class="clock-time"></div>
 </div>
 
-<div class="logo-wrap">
-<img src="logo3.png" class="logo" alt="Logo">
-</div>
+<img src="logo3.png" class="logo">
 
 <div class="title">Panels Quality Forms</div>
-
 </div>
 
 <div id="menuView" class="menu-view">
@@ -313,15 +262,9 @@ font-size:22px;
 <div class="subtext">Tap the form below to begin:</div>
 
 <div class="button-container">
-
-<button class="menu-button" data-form="https://forms.office.com/Pages/ResponsePage.aspx?Host=Teams&lang=%7Blocale%7D&groupId=%7BgroupId%7D&tid=%7Btid%7D&teamsTheme=%7Btheme%7D&upn=%7Bupn%7D&id=IgJUilauPEGR1SrfPab0L_vA7N9uOiBPqIiXOOKCS49UQlVQTFRCQzdYWDMzRkkxMjdWTjlESUdDNy4u">Panels Fab - Build</button>
-
-<button class="menu-button" data-form="https://forms.office.com/Pages/ResponsePage.aspx?Host=Teams&lang={locale}&groupId={groupId}&tid={tid}&teamsTheme={theme}&upn={upn}&id=IgJUilauPEGR1SrfPab0L_vA7N9uOiBPqIiXOOKCS49UM081UTRPWkYzWTRXSEo3VUdaME5JRldJNy4u">Panels Fab - Build Corners</button>
-
-<button class="menu-button" data-form="https://forms.office.com/Pages/ResponsePage.aspx?Host=Teams&lang={locale}&groupId={groupId}&tid={tid}&teamsTheme={theme}&upn={upn}&id=IgJUilauPEGR1SrfPab0L_vA7N9uOiBPqIiXOOKCS49UNTBQV0pJQ0FHTDUzQ01EQklONEdKVTI5Mi4u">Panels Fab - CNC</button>
-
-<button class="menu-button" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsBuild/formperma/DsANxGcHEdMFUn6xKEgIk3vXzqLdKq7kbSWIperZPVg">TEST</button>
-
+<button class="menu-button" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsBuild/formperma/DsANxGcHEdMFUn6xKEgIk3vXzqLdKq7kbSWIperZPVg">
+Panels Fab - Build
+</button>
 </div>
 
 </div>
@@ -329,14 +272,26 @@ font-size:22px;
 <div id="formView" class="form-view">
 
 <div class="form-toolbar">
-<div class="toolbar-left">
 <button id="homeButton" class="home-button">Return to Menu</button>
-</div>
 
 <div class="toolbar-right">
-<button class="guide-button" data-guide="https://hwumis.github.io/panelsforms/build-lamination.html">Buildtable Appearance Defects: Lamination</button>
-<button class="guide-button" data-guide="https://YOUR-GITHUB-PAGES-URL/appearance.html">Buildtable Appearance Defects: Appearance</button>
-<button class="guide-button" data-guide="https://YOUR-GITHUB-PAGES-URL/dimensional.html">Buildtable Appearance Defects: Dimensional</button>
+
+<button class="guide-button" data-guide="https://hwumis.github.io/panelsforms/build-lamination.html">
+Buildtable Defects: Lamination
+</button>
+
+<button class="guide-button" data-guide="https://hwumis.github.io/panelsforms/build-appearance.html">
+Buildtable Defects: Appearance
+</button>
+
+<button class="guide-button" data-guide="https://hwumis.github.io/panelsforms/build-dimensional.html">
+Buildtable Defects: Dimensional
+</button>
+
+<button class="guide-button" data-guide="https://hwumis.github.io/panelsforms/build-gaps.html">
+Buildtable Defects: Gaps
+</button>
+
 </div>
 </div>
 
@@ -346,119 +301,83 @@ font-size:22px;
 
 </div>
 
-<div id="guideModal" class="modal" aria-hidden="true">
+<!-- MODAL -->
+<div id="guideModal" class="modal">
 <div class="modal-content">
+
 <div class="modal-toolbar">
-<div id="modalTitle" class="modal-title">Defect Guide</div>
+<div style="font-size:22px;font-weight:700;">Defect Guide</div>
 <button id="closeGuideButton" class="modal-close">Close Guide</button>
 </div>
-<iframe id="guideFrame" class="modal-frame" src="about:blank"></iframe>
+
+<iframe id="guideFrame" class="modal-frame"></iframe>
+
 </div>
 </div>
 
 <script>
 
-const menuView = document.getElementById("menuView");
-const formView = document.getElementById("formView");
-const formFrame = document.getElementById("formFrame");
-const homeButton = document.getElementById("homeButton");
-const buttons = document.querySelectorAll(".menu-button");
-const guideButtons = document.querySelectorAll(".guide-button");
-const guideModal = document.getElementById("guideModal");
-const guideFrame = document.getElementById("guideFrame");
-const closeGuideButton = document.getElementById("closeGuideButton");
-const modalTitle = document.getElementById("modalTitle");
-const clockDate = document.getElementById("clockDate");
-const clockTime = document.getElementById("clockTime");
+const menuView=document.getElementById("menuView");
+const formView=document.getElementById("formView");
+const formFrame=document.getElementById("formFrame");
+const homeButton=document.getElementById("homeButton");
+const buttons=document.querySelectorAll(".menu-button");
+const guideButtons=document.querySelectorAll(".guide-button");
+const guideModal=document.getElementById("guideModal");
+const guideFrame=document.getElementById("guideFrame");
+const closeGuideButton=document.getElementById("closeGuideButton");
 
+/* NAVIGATION */
 function showMenu(){
-closeGuide();
-formFrame.src = "about:blank";
-formView.style.display = "none";
-menuView.style.display = "flex";
+formFrame.src="about:blank";
+formView.style.display="none";
+menuView.style.display="flex";
 }
 
 function showForm(url){
-menuView.style.display = "none";
-formView.style.display = "flex";
-formFrame.src = url;
+menuView.style.display="none";
+formView.style.display="flex";
+formFrame.src=url;
 }
 
-function openGuide(url, titleText){
-guideFrame.src = url;
-modalTitle.textContent = titleText;
-guideModal.classList.add("open");
-guideModal.setAttribute("aria-hidden", "false");
-}
-
-function closeGuide(){
-guideModal.classList.remove("open");
-guideModal.setAttribute("aria-hidden", "true");
-guideFrame.src = "about:blank";
-}
-
-homeButton.addEventListener("click", showMenu);
-
-buttons.forEach(btn => {
-btn.addEventListener("click", () => {
+buttons.forEach(btn=>{
+btn.addEventListener("click",()=>{
 showForm(btn.dataset.form);
 });
 });
 
-guideButtons.forEach(btn => {
-btn.addEventListener("click", () => {
-openGuide(btn.dataset.guide, btn.textContent.trim());
+homeButton.addEventListener("click",showMenu);
+
+/* GUIDE MODAL */
+guideButtons.forEach(btn=>{
+btn.addEventListener("click",()=>{
+guideFrame.src = btn.dataset.guide;
+guideModal.classList.add("open");
 });
 });
 
-closeGuideButton.addEventListener("click", closeGuide);
+closeGuideButton.addEventListener("click",()=>{
+guideModal.classList.remove("open");
+guideFrame.src="about:blank";
+});
 
-guideModal.addEventListener("click", (e) => {
-if(e.target === guideModal){
-closeGuide();
+guideModal.addEventListener("click",(e)=>{
+if(e.target===guideModal){
+guideModal.classList.remove("open");
+guideFrame.src="about:blank";
 }
 });
 
-document.addEventListener("keydown", (e) => {
-if(e.key === "Escape" && guideModal.classList.contains("open")){
-closeGuide();
-}
-});
-
-function formatUSDate(now){
-const weekdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-
-const weekday = weekdays[now.getDay()];
-const month = months[now.getMonth()];
-const day = now.getDate();
-const year = now.getFullYear();
-
-return `${weekday}, ${month} ${day}, ${year}`;
-}
-
-function formatUSTime(now){
-let hours = now.getHours();
-const minutes = String(now.getMinutes()).padStart(2,"0");
-const ampm = hours >= 12 ? "PM" : "AM";
-
-hours = hours % 12;
-if(hours === 0){
-hours = 12;
-}
-
-return `${hours}:${minutes} ${ampm}`;
-}
-
+/* CLOCK */
 function updateClock(){
-const now = new Date();
-clockDate.textContent = formatUSDate(now);
-clockTime.textContent = formatUSTime(now);
+const now=new Date();
+clockDate.textContent=now.toLocaleDateString();
+clockTime.textContent=now.toLocaleTimeString();
 }
-
+setInterval(updateClock,1000);
 updateClock();
-setInterval(updateClock, 1000);
 
+/* INIT */
 showMenu();
 
 </script>
