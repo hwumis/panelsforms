@@ -13,6 +13,7 @@
   --sub:#52606d;
   --header:#1b2a36;
   --border:#d9e2ec;
+  --overlay-bg:rgba(0,0,0,0.9);
 }
 
 *{
@@ -28,137 +29,127 @@ html,body{
   color:var(--text);
 }
 
-body{
-  min-height:100vh;
-}
-
 .header{
   background:var(--header);
   color:#fff;
-  padding:24px 20px;
+  padding:20px;
   text-align:center;
 }
 
 .header h1{
   margin:0;
-  font-size:36px;
-  line-height:1.2;
-}
-
-.header p{
-  margin:10px 0 0;
-  font-size:20px;
-  opacity:.95;
+  font-size:30px;
 }
 
 .container{
-  width:min(1400px, 96%);
-  margin:24px auto 40px;
+  width:min(1200px,95%);
+  margin:20px auto;
   display:grid;
-  gap:24px;
+  gap:20px;
 }
 
 .card{
   background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:20px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
 .card h2{
-  margin:0 0 14px;
-  font-size:30px;
+  margin:0 0 10px;
 }
 
 .desc{
-  font-size:22px;
+  font-size:18px;
   color:var(--sub);
-  margin:0 0 18px;
+  margin-bottom:12px;
 }
 
-.image-wrap{
+/* SMALL IMAGE */
+.thumb{
   width:100%;
+  max-height:300px;
+  object-fit:contain;
+  border-radius:10px;
+  cursor:pointer;
   background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  overflow:hidden;
 }
 
-.image-wrap img{
-  display:block;
-  width:100%;
-  height:auto;
+/* FULLSCREEN OVERLAY */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:var(--overlay-bg);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
 }
 
-.note{
-  width:min(1400px, 96%);
-  margin:0 auto 30px;
-  font-size:20px;
-  color:var(--sub);
-  text-align:center;
+.overlay.open{
+  display:flex;
 }
 
-@media (min-width: 1100px){
-  .container{
-    grid-template-columns:1fr 1fr;
-    align-items:start;
-  }
+.overlay img{
+  max-width:95%;
+  max-height:95%;
+  object-fit:contain;
 }
 
-@media (max-width: 900px){
-  .header h1{
-    font-size:28px;
-  }
-
-  .header p{
-    font-size:18px;
-  }
-
-  .card h2{
-    font-size:24px;
-  }
-
-  .desc{
-    font-size:18px;
-  }
-
-  .note{
-    font-size:17px;
-  }
+.overlay::after{
+  content:"Tap anywhere to close";
+  position:absolute;
+  bottom:20px;
+  color:white;
+  font-size:18px;
+  opacity:.8;
 }
+
 </style>
 </head>
+
 <body>
 
 <div class="header">
-  <h1>Buildtable Appearance Defects: Lamination</h1>
-  <p>Reference examples for operators</p>
+  <h1>Lamination Defects</h1>
 </div>
 
 <div class="container">
 
   <div class="card">
     <h2>Example 1</h2>
-    <p class="desc">Example 1</p>
-    <div class="image-wrap">
-      <img src="https://hwumis.github.io/panelsforms/bigpic.png" alt="Lamination Example 1">
-    </div>
+    <div class="desc">Example 1</div>
+    <img class="thumb" src="https://hwumis.github.io/panelsforms/bigpic.png" onclick="openImage(this.src)">
   </div>
 
   <div class="card">
     <h2>Example 2</h2>
-    <p class="desc">Example 2</p>
-    <div class="image-wrap">
-      <img src="https://hwumis.github.io/panelsforms/bigpic2.png" alt="Lamination Example 2">
-    </div>
+    <div class="desc">Example 2</div>
+    <img class="thumb" src="https://hwumis.github.io/panelsforms/bigpic2.png" onclick="openImage(this.src)">
   </div>
 
 </div>
 
-<div class="note">
-  Close this guide to return to the form.
+<!-- FULLSCREEN IMAGE -->
+<div id="overlay" class="overlay" onclick="closeImage()">
+  <img id="overlayImg">
 </div>
+
+<script>
+
+function openImage(src){
+  const overlay = document.getElementById("overlay");
+  const img = document.getElementById("overlayImg");
+
+  img.src = src;
+  overlay.classList.add("open");
+}
+
+function closeImage(){
+  document.getElementById("overlay").classList.remove("open");
+}
+
+</script>
 
 </body>
 </html>
