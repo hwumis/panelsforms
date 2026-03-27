@@ -1,1 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panels Quality Forms</title>
 
+<style>
+:root{
+--header-bg:#1b2a36;
+--page-bg:#f4f4f4;
+--button-bg:#3a6ea5;
+--button-hover:#2f5b89;
+--home-bg:#d32f2f;
+--home-hover:#b71c1c;
+--guide-bg:#2e7d32;
+--guide-hover:#256628;
+--modal-bg:rgba(0,0,0,0.72);
+}
+
+*{box-sizing:border-box;}
+
+html,body{
+margin:0;
+height:100%;
+font-family:Arial, Helvetica, sans-serif;
+background:var(--page-bg);
+overflow:hidden;
+}
+
+body{
+display:flex;
+flex-direction:column;
+}
+
+.header{
+display:grid;
+grid-template-columns:1fr auto 1fr;
+align-items:center;
+background:var(--header-bg);
+color:white;
+padding:20px 32px;
+}
+
+.clock-time{font-size:32px;font-weight:700;}
+.title{justify-self:end;font-size:42px;font-weight:700;}
+
+.menu-view{
+flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:30px;
+}
+
+.button-container{
+width:min(1000px,90%);
+display:grid;
+gap:20px;
+}
+
+.menu-button{
+min-height:100px;
+font-size:34px;
+border:none;
+border-radius:14px;
+background:var(--button-bg);
+color:white;
+font-weight:700;
+cursor:pointer;
+}
+
+.form-view{
+display:none;
+flex-direction:column;
+flex:1;
+padding:12px;
+gap:10px;
+}
+
+.form-toolbar{
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.toolbar-right{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.home-button{
+background:var(--home-bg);
+color:white;
+padding:12px 18px;
+border:none;
+border-radius:10px;
+font-size:20px;
+font-weight:700;
+}
+
+.guide-button{
+background:var(--guide-bg);
+color:white;
+padding:10px 14px;
+border:none;
+border-radius:8px;
+font-size:16px;
+font-weight:700;
+}
+
+.iframe-wrap{
+flex:1;
+border-radius:10px;
+overflow:hidden;
+background:white;
+}
+
+.form-frame{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* MODAL */
+.modal{
+display:none;
+position:fixed;
+inset:0;
+z-index:9999;
+background:var(--modal-bg);
+padding:20px;
+}
+
+.modal.open{
+display:flex;
+}
+
+.modal-content{
+width:100%;
+height:100%;
+background:white;
+border-radius:14px;
+display:flex;
+flex-direction:column;
+overflow:hidden;
+}
+
+.modal-toolbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 16px;
+background:#eee;
+}
+
+.modal-close{
+background:#ff7a00;
+color:white;
+border:none;
+border-radius:8px;
+padding:10px 14px;
+font-weight:700;
+}
+
+.modal-frame{
+flex:1;
+border:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<div id="clockTime" class="clock-time"></div>
+<div></div>
+<div class="title">Panels Quality Forms</div>
+</div>
+
+<div id="menuView" class="menu-view">
+
+<div class="button-container">
+<button class="menu-button" data-type="build" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsBuild/formperma/DsANxGcHEdMFUn6xKEgIk3vXzqLdKq7kbSWIperZPVg">
+Panels Fab - Build
+</button>
+
+<button class="menu-button" data-type="corners" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsBuild/formperma/DsANxGcHEdMFUn6xKEgIk3vXzqLdKq7kbSWIperZPVg">
+Panels Fab - Build Corners
+</button>
+
+<button class="menu-button" data-type="cnc" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsBuild/formperma/DsANxGcHEdMFUn6xKEgIk3vXzqLdKq7kbSWIperZPVg">
+Panels Fab - CNC
+</button>
+</div>
+
+</div>
+
+<div id="formView" class="form-view">
+
+<div class="form-toolbar">
+<button id="homeButton" class="home-button">Return to Menu</button>
+
+<div class="toolbar-right">
+<button id="btnLamination" class="guide-button">Lamination</button>
+<button id="btnAppearance" class="guide-button">Appearance</button>
+<button id="btnDimensional" class="guide-button">Dimensional</button>
+<button id="btnGaps" class="guide-button">Gaps</button>
+</div>
+</div>
+
+<div class="iframe-wrap">
+<iframe id="formFrame" class="form-frame"></iframe>
+</div>
+
+</div>
+
+<div id="guideModal" class="modal">
+<div class="modal-content">
+<div class="modal-toolbar">
+<div id="modalTitle">Defect Guide</div>
+<button id="closeGuideButton" class="modal-close">Close Guide</button>
+</div>
+<iframe id="guideFrame" class="modal-frame"></iframe>
+</div>
+</div>
+
+<script>
+
+/* GUIDE SETS */
+const guideSets = {
+build: {
+lamination: "https://hwumis.github.io/panelsforms/build-lamination.html",
+appearance: "https://hwumis.github.io/panelsforms/build-appearance.html",
+dimensional: "https://hwumis.github.io/panelsforms/build-dimensional.html",
+gaps: "https://hwumis.github.io/panelsforms/build-gaps.html"
+},
+corners: {
+lamination: "https://hwumis.github.io/panelsforms/build-lamination.html",
+appearance: "https://hwumis.github.io/panelsforms/build-appearance.html",
+dimensional: "https://hwumis.github.io/panelsforms/build-dimensional.html",
+gaps: "https://hwumis.github.io/panelsforms/build-gaps.html"
+},
+cnc: {
+lamination: "https://hwumis.github.io/panelsforms/build-lamination.html",
+appearance: "https://hwumis.github.io/panelsforms/build-appearance.html",
+dimensional: "https://hwumis.github.io/panelsforms/build-dimensional.html",
+gaps: "https://hwumis.github.io/panelsforms/build-gaps.html"
+}
+};
+
+/* ELEMENTS */
+const buttons = document.querySelectorAll(".menu-button");
+const formFrame = document.getElementById("formFrame");
+const formView = document.getElementById("formView");
+const menuView = document.getElementById("menuView");
+
+const guideFrame = document.getElementById("guideFrame");
+const guideModal = document.getElementById("guideModal");
+
+/* GUIDE BUTTONS */
+const btnLamination = document.getElementById("btnLamination");
+const btnAppearance = document.getElementById("btnAppearance");
+const btnDimensional = document.getElementById("btnDimensional");
+const btnGaps = document.getElementById("btnGaps");
+
+/* SET LINKS */
+function setGuideLinks(type){
+const set = guideSets[type];
+btnLamination.dataset.guide = set.lamination;
+btnAppearance.dataset.guide = set.appearance;
+btnDimensional.dataset.guide = set.dimensional;
+btnGaps.dataset.guide = set.gaps;
+}
+
+/* MENU CLICK */
+buttons.forEach(btn=>{
+btn.addEventListener("click",()=>{
+formFrame.src = btn.dataset.form;
+menuView.style.display="none";
+formView.style.display="flex";
+
+setGuideLinks(btn.dataset.type);
+});
+});
+
+/* GUIDE CLICK */
+document.querySelectorAll(".guide-button").forEach(btn=>{
+btn.addEventListener("click",()=>{
+guideFrame.src = btn.dataset.guide;
+guideModal.classList.add("open");
+});
+});
+
+/* CLOSE */
+document.getElementById("closeGuideButton").onclick=()=>{
+guideModal.classList.remove("open");
+guideFrame.src="";
+};
+
+/* HOME */
+document.getElementById("homeButton").onclick=()=>{
+formView.style.display="none";
+menuView.style.display="flex";
+formFrame.src="";
+};
+
+/* CLOCK */
+setInterval(()=>{
+document.getElementById("clockTime").textContent=new Date().toLocaleTimeString();
+},1000);
+
+</script>
+
+</body>
+</html>
