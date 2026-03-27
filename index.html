@@ -6,6 +6,7 @@
 <title>Panels Quality Forms</title>
 
 <style>
+
 :root{
 --header-bg:#1b2a36;
 --page-bg:#f4f4f4;
@@ -33,6 +34,7 @@ display:flex;
 flex-direction:column;
 }
 
+/* HEADER */
 .header{
 display:grid;
 grid-template-columns:1fr auto 1fr;
@@ -42,9 +44,18 @@ color:white;
 padding:20px 32px;
 }
 
-.clock-time{font-size:32px;font-weight:700;}
-.title{justify-self:end;font-size:42px;font-weight:700;}
+.clock-time{
+font-size:32px;
+font-weight:700;
+}
 
+.title{
+justify-self:end;
+font-size:42px;
+font-weight:700;
+}
+
+/* MENU */
 .menu-view{
 flex:1;
 display:flex;
@@ -70,6 +81,11 @@ font-weight:700;
 cursor:pointer;
 }
 
+.menu-button:hover{
+background:var(--button-hover);
+}
+
+/* FORM VIEW */
 .form-view{
 display:none;
 flex-direction:column;
@@ -169,6 +185,7 @@ font-weight:700;
 flex:1;
 border:none;
 }
+
 </style>
 </head>
 
@@ -183,6 +200,7 @@ border:none;
 <div id="menuView" class="menu-view">
 
 <div class="button-container">
+
 <button class="menu-button" data-type="build" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsBuild/formperma/DsANxGcHEdMFUn6xKEgIk3vXzqLdKq7kbSWIperZPVg">
 Panels Fab - Build
 </button>
@@ -194,6 +212,7 @@ Panels Fab - Build Corners
 <button class="menu-button" data-type="cnc" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsBuild/formperma/DsANxGcHEdMFUn6xKEgIk3vXzqLdKq7kbSWIperZPVg">
 Panels Fab - CNC
 </button>
+
 </div>
 
 </div>
@@ -204,10 +223,10 @@ Panels Fab - CNC
 <button id="homeButton" class="home-button">Return to Menu</button>
 
 <div class="toolbar-right">
-<button id="btnLamination" class="guide-button">Lamination</button>
-<button id="btnAppearance" class="guide-button">Appearance</button>
-<button id="btnDimensional" class="guide-button">Dimensional</button>
-<button id="btnGaps" class="guide-button">Gaps</button>
+<button id="btnLamination" class="guide-button">Buildtable Defects: Lamination</button>
+<button id="btnAppearance" class="guide-button">Buildtable Defects: Appearance</button>
+<button id="btnDimensional" class="guide-button">Buildtable Defects: Dimensional</button>
+<button id="btnGaps" class="guide-button">Buildtable Defects: Gaps</button>
 </div>
 </div>
 
@@ -219,11 +238,14 @@ Panels Fab - CNC
 
 <div id="guideModal" class="modal">
 <div class="modal-content">
+
 <div class="modal-toolbar">
-<div id="modalTitle">Defect Guide</div>
+<div>Defect Guide</div>
 <button id="closeGuideButton" class="modal-close">Close Guide</button>
 </div>
+
 <iframe id="guideFrame" class="modal-frame"></iframe>
+
 </div>
 </div>
 
@@ -231,24 +253,28 @@ Panels Fab - CNC
 
 /* GUIDE SETS */
 const guideSets = {
+
 build: {
 lamination: "https://hwumis.github.io/panelsforms/build-lamination.html",
 appearance: "https://hwumis.github.io/panelsforms/build-appearance.html",
 dimensional: "https://hwumis.github.io/panelsforms/build-dimensional.html",
 gaps: "https://hwumis.github.io/panelsforms/build-gaps.html"
 },
+
 corners: {
-lamination: "https://hwumis.github.io/panelsforms/build-lamination.html",
-appearance: "https://hwumis.github.io/panelsforms/build-appearance.html",
-dimensional: "https://hwumis.github.io/panelsforms/build-dimensional.html",
-gaps: "https://hwumis.github.io/panelsforms/build-gaps.html"
+lamination: "https://hwumis.github.io/panelsforms/corners-lamination.html",
+appearance: "https://hwumis.github.io/panelsforms/corners-appearance.html",
+dimensional: "https://hwumis.github.io/panelsforms/corners-dimensional.html",
+gaps: "https://hwumis.github.io/panelsforms/corners-gaps.html"
 },
+
 cnc: {
 lamination: "https://hwumis.github.io/panelsforms/build-lamination.html",
 appearance: "https://hwumis.github.io/panelsforms/build-appearance.html",
 dimensional: "https://hwumis.github.io/panelsforms/build-dimensional.html",
 gaps: "https://hwumis.github.io/panelsforms/build-gaps.html"
 }
+
 };
 
 /* ELEMENTS */
@@ -269,6 +295,8 @@ const btnGaps = document.getElementById("btnGaps");
 /* SET LINKS */
 function setGuideLinks(type){
 const set = guideSets[type];
+if(!set) return;
+
 btnLamination.dataset.guide = set.lamination;
 btnAppearance.dataset.guide = set.appearance;
 btnDimensional.dataset.guide = set.dimensional;
