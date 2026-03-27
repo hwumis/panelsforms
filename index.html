@@ -115,6 +115,11 @@ border:none;
 border-radius:10px;
 font-size:20px;
 font-weight:700;
+cursor:pointer;
+}
+
+.home-button:hover{
+background:var(--home-hover);
 }
 
 .guide-button{
@@ -125,6 +130,11 @@ border:none;
 border-radius:8px;
 font-size:16px;
 font-weight:700;
+cursor:pointer;
+}
+
+.guide-button:hover{
+background:var(--guide-hover);
 }
 
 .iframe-wrap{
@@ -179,6 +189,11 @@ border:none;
 border-radius:8px;
 padding:10px 14px;
 font-weight:700;
+cursor:pointer;
+}
+
+.modal-close:hover{
+background:#e06600;
 }
 
 .modal-frame{
@@ -240,7 +255,7 @@ Panels Fab - CNC
 <div class="modal-content">
 
 <div class="modal-toolbar">
-<div>Defect Guide</div>
+<div id="modalTitle">Defect Guide</div>
 <button id="closeGuideButton" class="modal-close">Close Guide</button>
 </div>
 
@@ -285,6 +300,7 @@ const menuView = document.getElementById("menuView");
 
 const guideFrame = document.getElementById("guideFrame");
 const guideModal = document.getElementById("guideModal");
+const modalTitle = document.getElementById("modalTitle");
 
 /* GUIDE BUTTONS */
 const btnLamination = document.getElementById("btnLamination");
@@ -303,42 +319,66 @@ btnDimensional.dataset.guide = set.dimensional;
 btnGaps.dataset.guide = set.gaps;
 }
 
+/* SET LABELS */
+function setGuideLabels(type){
+let prefix = "Buildtable Defects";
+
+if(type === "corners"){
+prefix = "Corners Defects";
+}
+else if(type === "cnc"){
+prefix = "CNC Defects";
+}
+
+btnLamination.textContent = `${prefix}: Lamination`;
+btnAppearance.textContent = `${prefix}: Appearance`;
+btnDimensional.textContent = `${prefix}: Dimensional`;
+btnGaps.textContent = `${prefix}: Gaps`;
+}
+
 /* MENU CLICK */
 buttons.forEach(btn=>{
 btn.addEventListener("click",()=>{
 formFrame.src = btn.dataset.form;
-menuView.style.display="none";
-formView.style.display="flex";
+menuView.style.display = "none";
+formView.style.display = "flex";
 
-setGuideLinks(btn.dataset.type);
+const type = btn.dataset.type;
+setGuideLinks(type);
+setGuideLabels(type);
 });
 });
 
 /* GUIDE CLICK */
 document.querySelectorAll(".guide-button").forEach(btn=>{
 btn.addEventListener("click",()=>{
-guideFrame.src = btn.dataset.guide;
+guideFrame.src = btn.dataset.guide || "";
+modalTitle.textContent = btn.textContent;
 guideModal.classList.add("open");
 });
 });
 
 /* CLOSE */
-document.getElementById("closeGuideButton").onclick=()=>{
+document.getElementById("closeGuideButton").onclick = ()=>{
 guideModal.classList.remove("open");
-guideFrame.src="";
+guideFrame.src = "";
 };
 
 /* HOME */
-document.getElementById("homeButton").onclick=()=>{
-formView.style.display="none";
-menuView.style.display="flex";
-formFrame.src="";
+document.getElementById("homeButton").onclick = ()=>{
+formView.style.display = "none";
+menuView.style.display = "flex";
+formFrame.src = "";
+guideModal.classList.remove("open");
+guideFrame.src = "";
 };
 
 /* CLOCK */
-setInterval(()=>{
-document.getElementById("clockTime").textContent=new Date().toLocaleTimeString();
-},1000);
+function updateClock(){
+document.getElementById("clockTime").textContent = new Date().toLocaleTimeString();
+}
+updateClock();
+setInterval(updateClock, 1000);
 
 </script>
 
