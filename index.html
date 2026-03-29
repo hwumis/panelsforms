@@ -284,10 +284,9 @@ gaps: "https://hwumis.github.io/panelsforms/corners-gaps.html"
 },
 
 cnc: {
-lamination: "https://hwumis.github.io/panelsforms/build-lamination.html",
-appearance: "https://hwumis.github.io/panelsforms/build-appearance.html",
-dimensional: "https://hwumis.github.io/panelsforms/build-dimensional.html",
-gaps: "https://hwumis.github.io/panelsforms/build-gaps.html"
+lamination: "https://hwumis.github.io/panelsforms/cnc-lamination.html",
+appearance: "https://hwumis.github.io/panelsforms/cnc-appearance.html",
+dimensional: "https://hwumis.github.io/panelsforms/cnc-dimensional.html"
 }
 
 };
@@ -316,7 +315,14 @@ if(!set) return;
 btnLamination.dataset.guide = set.lamination;
 btnAppearance.dataset.guide = set.appearance;
 btnDimensional.dataset.guide = set.dimensional;
+
+if(set.gaps){
 btnGaps.dataset.guide = set.gaps;
+btnGaps.style.display = "inline-block";
+} else {
+btnGaps.dataset.guide = "";
+btnGaps.style.display = "none";
+}
 }
 
 /* SET LABELS */
@@ -333,7 +339,10 @@ prefix = "CNC Defects";
 btnLamination.textContent = `${prefix}: Lamination`;
 btnAppearance.textContent = `${prefix}: Appearance`;
 btnDimensional.textContent = `${prefix}: Dimensional`;
+
+if(guideSets[type].gaps){
 btnGaps.textContent = `${prefix}: Gaps`;
+}
 }
 
 /* MENU CLICK */
@@ -371,6 +380,7 @@ menuView.style.display = "flex";
 formFrame.src = "";
 guideModal.classList.remove("open");
 guideFrame.src = "";
+btnGaps.style.display = "inline-block";
 };
 
 /* CLOCK */
