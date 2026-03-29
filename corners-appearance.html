@@ -10,7 +10,6 @@
   --bg:#f4f4f4;
   --card:#ffffff;
   --text:#1f2933;
-  --sub:#52606d;
   --header:#1b2a36;
   --border:#d9e2ec;
   --overlay-bg:rgba(0,0,0,0.9);
@@ -69,17 +68,17 @@ body{
   box-shadow:0 3px 8px rgba(0,0,0,0.08);
 }
 
-.card h2{
-  margin:0 0 4px;
+.card-title{
+  margin:0 0 10px 0;
+  text-align:center;
   font-size:20px;
   line-height:1.2;
-}
-
-.desc{
-  font-size:15px;
-  color:var(--sub);
-  margin:0 0 10px;
-  line-height:1.3;
+  font-weight:700;
+  color:var(--text);
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .thumb-wrap{
@@ -91,6 +90,7 @@ body{
   border:1px solid var(--border);
   border-radius:10px;
   padding:8px;
+  overflow:hidden;
 }
 
 .thumb{
@@ -134,6 +134,7 @@ body{
   padding:10px 14px;
   font-size:18px;
   font-weight:700;
+  cursor:pointer;
 }
 
 .overlay-hint{
@@ -159,6 +160,11 @@ body{
   .thumb{
     max-height:220px;
   }
+
+  .card-title{
+    font-size:18px;
+    min-height:auto;
+  }
 }
 </style>
 </head>
@@ -171,50 +177,86 @@ body{
 <div class="container">
 
   <div class="card">
-    <h2>Option 1</h2>
-    <p class="desc">Example 1</p>
+    <h2 class="card-title">Glue On Surface</h2>
     <div class="thumb-wrap">
-      <img class="thumb" src="https://hwumis.github.io/panelsforms/bigpic2.png" alt="Option 1" onclick="openImage(this.src)">
+      <img class="thumb" src="https://hwumis.github.io/panelsforms/PanelsCornerDefectPics/CornersAppearanceGlue.jpg" alt="Glue On Surface" onclick="openImage(this.src)">
     </div>
   </div>
 
   <div class="card">
-    <h2>Option 2</h2>
-    <p class="desc">Example 2</p>
+    <h2 class="card-title">Color-off (hue, shade, etc.)</h2>
     <div class="thumb-wrap">
-      <img class="thumb" src="https://hwumis.github.io/panelsforms/bigpic2.png" alt="Option 2" onclick="openImage(this.src)">
+      <img class="thumb" src="https://hwumis.github.io/panelsforms/PanelsCornerDefectPics/CornersAppearanceColorOff.jpg" alt="Color-off (hue, shade, etc.)" onclick="openImage(this.src)">
     </div>
   </div>
 
   <div class="card">
-    <h2>Option 3</h2>
-    <p class="desc">Example 3</p>
+    <h2 class="card-title">Color-streaker too heavy</h2>
     <div class="thumb-wrap">
-      <img class="thumb" src="https://hwumis.github.io/panelsforms/bigpic2.png" alt="Option 3" onclick="openImage(this.src)">
+      <img class="thumb" src="https://hwumis.github.io/panelsforms/PanelsCornerDefectPics/CornersAppearanceColorStreaker.jpg" alt="Color-streaker too heavy" onclick="openImage(this.src)">
     </div>
   </div>
 
   <div class="card">
-    <h2>Option 4</h2>
-    <p class="desc">Example 4</p>
+    <h2 class="card-title">Color-drastic striping (across width of board)</h2>
     <div class="thumb-wrap">
-      <img class="thumb" src="https://hwumis.github.io/panelsforms/bigpic2.png" alt="Option 4" onclick="openImage(this.src)">
+      <img class="thumb" src="https://hwumis.github.io/panelsforms/PanelsCornerDefectPics/CornersAppearanceStriping.jpg" alt="Color-drastic striping (across width of board)" onclick="openImage(this.src)">
     </div>
   </div>
 
   <div class="card">
-    <h2>Option 5</h2>
-    <p class="desc">Example 5</p>
+    <h2 class="card-title">Color-drastic swing (within same pallet)</h2>
     <div class="thumb-wrap">
-      <img class="thumb" src="https://hwumis.github.io/panelsforms/bigpic2.png" alt="Option 5" onclick="openImage(this.src)">
+      <img class="thumb" src="https://hwumis.github.io/panelsforms/PanelsCornerDefectPics/CornersAppearanceColorSwing.jpg" alt="Color-drastic swing (within same pallet)" onclick="openImage(this.src)">
     </div>
   </div>
 
   <div class="card">
-    <h2>Option 6</h2>
-    <p class="desc">Example 6</p>
+    <h2 class="card-title">Embossing-fractured (looks white)</h2>
     <div class="thumb-wrap">
-      <img class="thumb" src="https://hwumis.github.io/panelsforms/bigpic2.png" alt="Option 6" onclick="openImage(this.src)">
+      <img class="thumb" src="https://hwumis.github.io/panelsforms/PanelsCornerDefectPics/CornersAppearanceEmbossingFractured.jpg" alt="Embossing-fractured (looks white)" onclick="openImage(this.src)">
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="card-title">Embossing-too light/missing</h2>
+    <div class="thumb-wrap">
+      <img class="thumb" src="https://hwumis.github.io/panelsforms/PanelsCornerDefectPics/CornersAppearanceEmbossingLightMissing.jpg" alt="Embossing-too light/missing" onclick="openImage(this.src)">
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="card-title">Groove-Wavy</h2>
+    <div class="thumb-wrap">
+      <img class="thumb" src="https://hwumis.github.io/panelsforms/PanelsCornerDefectPics/CornersAppearanceGrooveWavy.jpg" alt="Groove-Wavy" onclick="openImage(this.src)">
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="card-title">Surface Quality-blisters</h2>
+    <div class="thumb-wrap">
+      <img class="thumb" src="https://hwumis.github.io/panelsforms/PanelsCornerDefectPics/CornersAppearanceSurfaceBlisters.jpg" alt="Surface Quality-blisters" onclick="openImage(this.src)">
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="card-title">Surface Quality-repetitive marks (one type shown)</h2>
+    <div class="thumb-wrap">
+      <img class="thumb" src="https://hwumis.github.io/panelsforms/PanelsCornerDefectPics/CornersAppearanceSurfaceRepetitive.jpg" alt="Surface Quality-repetitive marks (one type shown)" onclick="openImage(this.src)">
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="card-title">Surface Quality-rough texture (alligator skin)</h2>
+    <div class="thumb-wrap">
+      <img class="thumb" src="https://hwumis.github.io/panelsforms/PanelsCornerDefectPics/CornersAppearanceSurfaceAlligator.jpg" alt="Surface Quality-rough texture (alligator skin)" onclick="openImage(this.src)">
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="card-title">Surface Quality-rough texture (orange peel)</h2>
+    <div class="thumb-wrap">
+      <img class="thumb" src="https://hwumis.github.io/panelsforms/PanelsCornerDefectPics/CornersAppearanceOrangePeel.jpg" alt="Surface Quality-rough texture (orange peel)" onclick="openImage(this.src)">
     </div>
   </div>
 
