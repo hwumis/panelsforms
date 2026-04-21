@@ -714,7 +714,6 @@ body{
       </div>
 
       <div class="trello-actions">
-        <a class="trello-link-btn" href="https://trello.com/b/xuedXpkj/panel-scheduled" target="_blank" rel="noopener noreferrer">Open Native Trello</a>
         <button id="reloadTrelloButton" class="trello-link-btn" type="button">Reload Board</button>
         <button id="closeTrelloOverlayButton" class="trello-close-btn" type="button">Close Trello Board</button>
       </div>
@@ -1184,11 +1183,10 @@ async function loadTrelloBoard(){
         <div class="trello-list-header">Unable to load board</div>
         <div class="trello-empty">
           This custom overlay could not read the board data feed from Trello.
-          You can still use the blue button above to open the native Trello board.
         </div>
       </div>
     `;
-    showTrelloStatus("Could not load the public board data into the overlay. Use “Open Native Trello” if needed.", true);
+    showTrelloStatus("Could not load the public board data into the overlay.", true);
     console.error("Trello overlay load failed:", error);
   }
 }
