@@ -13,23 +13,6 @@
   --button-hover:#2f5b89;
   --home-bg:#d32f2f;
   --home-hover:#b71c1c;
-  --guide-bg:#2e7d32;
-  --guide-hover:#256628;
-  --trello-bg:#f4c542;
-  --trello-hover:#ddb12f;
-  --modal-bg:rgba(0,0,0,0.72);
-
-  --trello-overlay-bg:rgba(0,0,0,0.84);
-  --trello-shell-bg:#e9eef5;
-  --trello-list-bg:#e7c9c9;
-  --trello-card-bg:#f6f6f6;
-  --trello-text:#2b2b2b;
-  --trello-muted:#666;
-  --trello-border:#d2b0b0;
-  --trello-chip-bg:#ececec;
-  --trello-link:#0c66e4;
-  --trello-field-bg:#efefef;
-  --trello-field-label:#555;
 }
 
 *{box-sizing:border-box;}
@@ -62,18 +45,10 @@ body{
   display:flex;
   flex-direction:column;
   justify-self:start;
-  line-height:1.15;
 }
 
-.clock-date{
-  font-size:20px;
-  font-weight:700;
-}
-
-.clock-time{
-  font-size:32px;
-  font-weight:700;
-}
+.clock-date{font-size:20px;font-weight:700;}
+.clock-time{font-size:32px;font-weight:700;}
 
 .logo-wrap{
   justify-self:center;
@@ -85,16 +60,12 @@ body{
 .header-logo{
   max-height:70px;
   max-width:280px;
-  width:auto;
-  height:auto;
-  display:block;
 }
 
 .title{
   justify-self:end;
   font-size:42px;
   font-weight:700;
-  text-align:right;
 }
 
 /* MENU */
@@ -127,35 +98,17 @@ body{
   background:var(--button-hover);
 }
 
-.trello-button{
-  background:var(--trello-bg);
-  color:#1b1b1b;
-}
-
-.trello-button:hover{
-  background:var(--trello-hover);
-}
-
 /* FORM VIEW */
 .form-view{
   display:none;
   flex-direction:column;
   flex:1;
-  padding:12px;
-  gap:10px;
+  padding:0; /* FIXED */
 }
 
 .form-toolbar{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.toolbar-right{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
+  padding:10px 12px 0 12px; /* FIXED */
+  margin:0;
 }
 
 .home-button{
@@ -173,23 +126,9 @@ body{
   background:var(--home-hover);
 }
 
-.guide-button{
-  background:var(--guide-bg);
-  color:white;
-  padding:10px 14px;
-  border:none;
-  border-radius:8px;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.guide-button:hover{
-  background:var(--guide-hover);
-}
-
 .iframe-wrap{
   flex:1;
+  margin-top:8px; /* FIXED */
   border-radius:10px;
   overflow:hidden;
   background:white;
@@ -199,439 +138,6 @@ body{
   width:100%;
   height:100%;
   border:none;
-}
-
-/* GUIDE MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  background:var(--modal-bg);
-  padding:20px;
-}
-
-.modal.open{
-  display:flex;
-}
-
-.modal-content{
-  width:100%;
-  height:100%;
-  background:white;
-  border-radius:14px;
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
-}
-
-.modal-toolbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px 16px;
-  background:#eee;
-}
-
-.modal-close{
-  background:#ff7a00;
-  color:white;
-  border:none;
-  border-radius:8px;
-  padding:10px 14px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.modal-close:hover{
-  background:#e06600;
-}
-
-.modal-frame{
-  flex:1;
-  border:none;
-}
-
-/* TRELLO OVERLAY */
-.trello-overlay{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:10001;
-  background:var(--trello-overlay-bg);
-  padding:8px;
-}
-
-.trello-overlay.open{
-  display:block;
-}
-
-.trello-shell{
-  width:100%;
-  height:100%;
-  background:var(--trello-shell-bg);
-  border-radius:14px;
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
-}
-
-.trello-toolbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  padding:14px 16px;
-  background:#f7f7f7;
-  border-bottom:1px solid var(--trello-border);
-  flex-wrap:wrap;
-}
-
-.trello-title-wrap{
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-  min-width:0;
-}
-
-.trello-title{
-  font-size:30px;
-  font-weight:700;
-  color:var(--trello-text);
-  line-height:1.1;
-}
-
-.trello-subtitle{
-  font-size:14px;
-  color:var(--trello-muted);
-}
-
-.trello-actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.trello-link-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  background:#3a6ea5;
-  color:white;
-  text-decoration:none;
-  padding:10px 14px;
-  border-radius:8px;
-  font-weight:700;
-  border:none;
-  cursor:pointer;
-}
-
-.trello-link-btn:hover{
-  background:#2f5b89;
-}
-
-.trello-close-btn{
-  background:#ff7a00;
-  color:white;
-  border:none;
-  border-radius:8px;
-  padding:10px 14px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.trello-close-btn:hover{
-  background:#e06600;
-}
-
-.trello-status{
-  padding:12px 16px;
-  font-size:16px;
-  color:var(--trello-text);
-  background:#fff8e1;
-  border-bottom:1px solid #e8d8a8;
-  display:none;
-}
-
-.trello-status.show{
-  display:block;
-}
-
-.trello-board-scroll{
-  flex:1;
-  overflow:auto;
-  padding:14px;
-}
-
-.trello-board{
-  display:flex;
-  align-items:flex-start;
-  gap:14px;
-  min-width:max-content;
-  min-height:100%;
-}
-
-.trello-list{
-  width:460px;
-  min-width:460px;
-  max-width:460px;
-  background:var(--trello-list-bg);
-  border-radius:16px;
-  display:flex;
-  flex-direction:column;
-  max-height:100%;
-  box-shadow:0 1px 2px rgba(9,30,66,0.15);
-  border:1px solid var(--trello-border);
-}
-
-.trello-list-header{
-  padding:14px 14px 10px 14px;
-  font-size:22px;
-  font-weight:700;
-  color:var(--trello-text);
-  position:sticky;
-  top:0;
-  background:var(--trello-list-bg);
-  border-radius:16px 16px 0 0;
-  z-index:1;
-}
-
-.trello-list-count{
-  font-size:13px;
-  font-weight:700;
-  color:var(--trello-muted);
-  margin-left:6px;
-}
-
-.trello-cards{
-  overflow-y:auto;
-  overflow-x:hidden;
-  padding:10px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.trello-card{
-  background:var(--trello-card-bg);
-  border-radius:10px;
-  box-shadow:0 1px 2px rgba(9,30,66,0.16);
-  display:flex;
-  flex-direction:column;
-  gap:0;
-  border:1px solid rgba(9,30,66,0.08);
-  overflow:hidden;
-}
-
-.trello-card:hover{
-  box-shadow:0 2px 6px rgba(9,30,66,0.18);
-}
-
-.trello-cover{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  display:block;
-  background:#d8dee7;
-}
-
-.trello-card-body{
-  padding:12px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.trello-labels{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-}
-
-.trello-label{
-  display:inline-block;
-  padding:4px 8px;
-  border-radius:6px;
-  font-size:12px;
-  font-weight:700;
-  color:#111;
-  background:#dcdcdc;
-  min-width:40px;
-  min-height:22px;
-}
-
-.trello-card-title{
-  font-size:18px;
-  font-weight:700;
-  color:var(--trello-text);
-  line-height:1.3;
-  word-break:break-word;
-}
-
-.trello-section{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-
-.trello-section-title{
-  font-size:13px;
-  font-weight:700;
-  color:var(--trello-muted);
-  text-transform:uppercase;
-  letter-spacing:.03em;
-}
-
-.trello-card-desc{
-  font-size:14px;
-  color:#42526e;
-  line-height:1.45;
-  white-space:pre-wrap;
-  word-break:break-word;
-}
-
-.trello-meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  align-items:center;
-}
-
-.trello-chip{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  background:var(--trello-chip-bg);
-  color:#344563;
-  border-radius:999px;
-  padding:5px 9px;
-  font-size:12px;
-  font-weight:700;
-}
-
-.trello-members{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-}
-
-.trello-member{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:30px;
-  height:30px;
-  border-radius:50%;
-  background:#5e6c84;
-  color:white;
-  font-size:12px;
-  font-weight:700;
-}
-
-.trello-fields-grid{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:10px 14px;
-}
-
-.trello-field{
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-  min-width:0;
-}
-
-.trello-field-name{
-  font-size:12px;
-  font-weight:700;
-  color:var(--trello-field-label);
-  text-transform:none;
-}
-
-.trello-field-value{
-  background:var(--trello-field-bg);
-  border-radius:6px;
-  padding:10px 12px;
-  font-size:14px;
-  color:#555;
-  min-height:40px;
-  display:flex;
-  align-items:center;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-}
-
-.trello-card-links{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.trello-card-link{
-  display:inline-block;
-  font-size:14px;
-  font-weight:700;
-  color:var(--trello-link);
-  text-decoration:none;
-}
-
-.trello-card-link:hover{
-  text-decoration:underline;
-}
-
-.trello-empty{
-  padding:14px;
-  color:var(--trello-muted);
-  font-size:15px;
-}
-
-@media (max-width: 1200px){
-  .trello-fields-grid{
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 900px){
-  .header{
-    grid-template-columns:1fr;
-    justify-items:center;
-    text-align:center;
-  }
-
-  .clock-wrap,
-  .logo-wrap,
-  .title{
-    justify-self:center;
-    text-align:center;
-  }
-
-  .title{
-    font-size:34px;
-  }
-
-  .header-logo{
-    max-height:60px;
-    max-width:220px;
-  }
-
-  .trello-title{
-    font-size:24px;
-  }
-
-  .trello-list{
-    width:360px;
-    min-width:360px;
-    max-width:360px;
-  }
-
-  .trello-cover{
-    height:150px;
-  }
-
-  .trello-fields-grid{
-    grid-template-columns:1fr;
-  }
 }
 </style>
 </head>
@@ -645,7 +151,7 @@ body{
   </div>
 
   <div class="logo-wrap">
-    <img src="logo3.png" alt="Logo" class="header-logo">
+    <img src="logo3.png" class="header-logo">
   </div>
 
   <div class="title">Panels Quality Forms</div>
@@ -654,24 +160,20 @@ body{
 <div id="menuView" class="menu-view">
   <div class="button-container">
 
-    <button class="menu-button" data-type="build" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsBuild/formperma/DsANxGcHEdMFUn6xKEgIk3vXzqLdKq7kbSWIperZPVg">
+    <button class="menu-button" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsBuild/formperma/DsANxGcHEdMFUn6xKEgIk3vXzqLdKq7kbSWIperZPVg">
       Panels Build
     </button>
 
-    <button class="menu-button" data-type="corners" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsQualityFormsCornersOrderStart/formperma/vxYk_EDb4LTk8UpPtsIaD2RwPr68PI_-wDm-xS_YgM4">
+    <button class="menu-button" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsQualityFormsCornersOrderStart/formperma/vxYk_EDb4LTk8UpPtsIaD2RwPr68PI_-wDm-xS_YgM4">
       Corners Order Start
     </button>
 
-    <button class="menu-button" data-type="corners" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsQualityFormsCornersHourly/formperma/kjx24aXaOGZkhWOw__OEkuEfeEJ6YLniqTdvHKZnkwE">
+    <button class="menu-button" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsQualityFormsCornersHourly/formperma/kjx24aXaOGZkhWOw__OEkuEfeEJ6YLniqTdvHKZnkwE">
       Corners Hourly
     </button>
 
-    <button class="menu-button" data-type="cnc" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsQualityFormCNC/formperma/w2DyynzQa9_CzrHmk6vaDaBJiGTUM-aFtHXmiABQzTY">
+    <button class="menu-button" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsQualityFormCNC/formperma/w2DyynzQa9_CzrHmk6vaDaBJiGTUM-aFtHXmiABQzTY">
       CNC
-    </button>
-
-    <button id="trelloMenuButton" class="menu-button trello-button" type="button">
-      Trello Board
     </button>
 
   </div>
@@ -680,14 +182,6 @@ body{
 <div id="formView" class="form-view">
   <div class="form-toolbar">
     <button id="homeButton" class="home-button">Return to Menu</button>
-
-    <div class="toolbar-right">
-      <button id="btnLamination" class="guide-button">Buildtable Defects: Lamination</button>
-      <button id="btnAppearance" class="guide-button">Buildtable Defects: Appearance</button>
-      <button id="btnDimensional" class="guide-button">Buildtable Defects: Dimensional</button>
-      <button id="btnGaps" class="guide-button">Buildtable Defects: Gaps</button>
-      <button id="trelloFormButton" class="guide-button trello-button" type="button">Trello Board</button>
-    </div>
   </div>
 
   <div class="iframe-wrap">
@@ -695,532 +189,51 @@ body{
   </div>
 </div>
 
-<div id="guideModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-toolbar">
-      <div id="modalTitle">Defect Guide</div>
-      <button id="closeGuideButton" class="modal-close">Close Guide</button>
-    </div>
-    <iframe id="guideFrame" class="modal-frame"></iframe>
-  </div>
-</div>
-
-<div id="trelloOverlay" class="trello-overlay">
-  <div class="trello-shell">
-    <div class="trello-toolbar">
-      <div class="trello-title-wrap">
-        <div id="trelloBoardTitle" class="trello-title">Trello Board</div>
-        <div class="trello-subtitle">Overlay above the current form. Close it to go back without resetting the form.</div>
-      </div>
-
-      <div class="trello-actions">
-        <button id="reloadTrelloButton" class="trello-link-btn" type="button">Reload Board</button>
-        <button id="closeTrelloOverlayButton" class="trello-close-btn" type="button">Close Trello Board</button>
-      </div>
-    </div>
-
-    <div id="trelloStatus" class="trello-status"></div>
-
-    <div class="trello-board-scroll">
-      <div id="trelloBoard" class="trello-board"></div>
-    </div>
-  </div>
-</div>
-
 <script>
-/* GUIDE SETS */
-const guideSets = {
-  build: {
-    lamination: "https://hwumis.github.io/panelsforms/build-lamination.html",
-    appearance: "https://hwumis.github.io/panelsforms/build-appearance.html",
-    dimensional: "https://hwumis.github.io/panelsforms/build-dimensional.html",
-    gaps: "https://hwumis.github.io/panelsforms/build-gaps.html"
-  },
-
-  corners: {
-    lamination: "https://hwumis.github.io/panelsforms/corners-lamination.html",
-    appearance: "https://hwumis.github.io/panelsforms/corners-appearance.html",
-    dimensional: "https://hwumis.github.io/panelsforms/corners-dimensional.html",
-    gaps: "https://hwumis.github.io/panelsforms/corners-gaps.html"
-  },
-
-  cnc: {
-    lamination: "https://hwumis.github.io/panelsforms/cnc-lamination.html",
-    appearance: "https://hwumis.github.io/panelsforms/cnc-appearance.html",
-    dimensional: "https://hwumis.github.io/panelsforms/cnc-dimensional.html"
-  }
-};
-
-/* ELEMENTS */
-const buttons = document.querySelectorAll(".menu-button[data-form]");
+const buttons = document.querySelectorAll(".menu-button");
 const formFrame = document.getElementById("formFrame");
 const formView = document.getElementById("formView");
 const menuView = document.getElementById("menuView");
 
-const guideFrame = document.getElementById("guideFrame");
-const guideModal = document.getElementById("guideModal");
-const modalTitle = document.getElementById("modalTitle");
-
-const btnLamination = document.getElementById("btnLamination");
-const btnAppearance = document.getElementById("btnAppearance");
-const btnDimensional = document.getElementById("btnDimensional");
-const btnGaps = document.getElementById("btnGaps");
-
-const trelloMenuButton = document.getElementById("trelloMenuButton");
-const trelloFormButton = document.getElementById("trelloFormButton");
-const trelloOverlay = document.getElementById("trelloOverlay");
-const trelloBoard = document.getElementById("trelloBoard");
-const trelloStatus = document.getElementById("trelloStatus");
-const trelloBoardTitle = document.getElementById("trelloBoardTitle");
-const reloadTrelloButton = document.getElementById("reloadTrelloButton");
-const closeTrelloOverlayButton = document.getElementById("closeTrelloOverlayButton");
-
-/* TRELLO SETTINGS */
-const trelloBoardUrl = "https://trello.com/b/xuedXpkj/panel-scheduled";
-const trelloJsonUrl = "https://trello.com/b/xuedXpkj/panel-scheduled.json";
-let trelloLoadedOnce = false;
-
-/* HELPERS */
-function escapeHtml(value){
-  return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-function formatDate(value){
-  if(!value) return "";
-  const date = new Date(value);
-  if(Number.isNaN(date.getTime())) return "";
-  return date.toLocaleString("en-US", {
-    timeZone: "America/New_York",
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true
-  });
-}
-
-function normalizeLabelColor(color){
-  const map = {
-    green:"#4bce97",
-    yellow:"#f5cd47",
-    orange:"#fea362",
-    red:"#f87168",
-    purple:"#9f8fef",
-    blue:"#579dff",
-    sky:"#6cc3e0",
-    lime:"#94c748",
-    pink:"#e774bb",
-    black:"#8590a2"
-  };
-  return map[color] || "#d0d4db";
-}
-
-function initialsFromName(name){
-  if(!name) return "?";
-  return name
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0,2)
-    .map(part => part.charAt(0).toUpperCase())
-    .join("");
-}
-
-function showTrelloStatus(message, isError=false){
-  trelloStatus.textContent = message;
-  trelloStatus.classList.add("show");
-  trelloStatus.style.background = isError ? "#fde7e9" : "#fff8e1";
-  trelloStatus.style.borderBottomColor = isError ? "#f5c2c7" : "#e8d8a8";
-}
-
-function clearTrelloStatus(){
-  trelloStatus.textContent = "";
-  trelloStatus.classList.remove("show");
-}
-
-function getCardCover(card){
-  if(card.cover && Array.isArray(card.cover.scaled) && card.cover.scaled.length){
-    const scaled = [...card.cover.scaled].sort((a,b)=>(b.width || 0) - (a.width || 0));
-    return scaled[0]?.url || "";
-  }
-  if(card.cover && card.cover.url){
-    return card.cover.url;
-  }
-  if(Array.isArray(card.attachments) && card.attachments.length){
-    const img = card.attachments.find(att => Array.isArray(att.previews) && att.previews.length);
-    if(img){
-      const prev = [...img.previews].sort((a,b)=>(b.width || 0) - (a.width || 0));
-      return prev[0]?.url || "";
-    }
-  }
-  return "";
-}
-
-function buildCustomFieldMap(customFields){
-  const map = {};
-  for(const field of (customFields || [])){
-    map[field.id] = field;
-  }
-  return map;
-}
-
-function buildCardCustomFieldMap(customFieldItems){
-  const map = {};
-  for(const item of (customFieldItems || [])){
-    map[item.idCustomField] = item;
-  }
-  return map;
-}
-
-function getCustomFieldValue(item, fieldDef){
-  if(!item || !fieldDef) return "";
-
-  if(item.value){
-    if(typeof item.value.text === "string") return item.value.text;
-    if(typeof item.value.number === "string") return item.value.number;
-    if(typeof item.value.date === "string") return formatDate(item.value.date);
-    if(typeof item.value.checked === "string") return item.value.checked === "true" ? "Yes" : "No";
-  }
-
-  if(item.idValue && Array.isArray(fieldDef.options)){
-    const opt = fieldDef.options.find(o => o.id === item.idValue);
-    if(opt){
-      return opt.value?.text || opt.color || opt.id;
-    }
-  }
-
-  return "";
-}
-
-/* GUIDE LINKS */
-function setGuideLinks(type){
-  const set = guideSets[type];
-  if(!set) return;
-
-  btnLamination.dataset.guide = set.lamination;
-  btnAppearance.dataset.guide = set.appearance;
-  btnDimensional.dataset.guide = set.dimensional;
-
-  if(set.gaps){
-    btnGaps.dataset.guide = set.gaps;
-    btnGaps.style.display = "inline-block";
-  } else {
-    btnGaps.dataset.guide = "";
-    btnGaps.style.display = "none";
-  }
-}
-
-/* GUIDE LABELS */
-function setGuideLabels(type){
-  let prefix = "Buildtable Defects";
-
-  if(type === "corners"){
-    prefix = "Corners Defects";
-  } else if(type === "cnc"){
-    prefix = "CNC Defects";
-  }
-
-  btnLamination.textContent = `${prefix}: Lamination`;
-  btnAppearance.textContent = `${prefix}: Appearance`;
-  btnDimensional.textContent = `${prefix}: Dimensional`;
-
-  if(guideSets[type].gaps){
-    btnGaps.textContent = `${prefix}: Gaps`;
-  }
-}
-
-/* MENU CLICK */
 buttons.forEach(btn=>{
   btn.addEventListener("click",()=>{
     formFrame.src = btn.dataset.form;
     menuView.style.display = "none";
     formView.style.display = "flex";
-
-    const type = btn.dataset.type;
-    setGuideLinks(type);
-    setGuideLabels(type);
   });
 });
 
-/* GUIDE CLICK */
-document.querySelectorAll(".guide-button").forEach(btn=>{
-  if(btn.id === "trelloFormButton") return;
-
-  btn.addEventListener("click",()=>{
-    guideFrame.src = btn.dataset.guide || "";
-    modalTitle.textContent = btn.textContent;
-    guideModal.classList.add("open");
-  });
-});
-
-/* CLOSE GUIDE */
-document.getElementById("closeGuideButton").onclick = ()=>{
-  guideModal.classList.remove("open");
-  guideFrame.src = "";
-};
-
-/* HOME */
 document.getElementById("homeButton").onclick = ()=>{
   formView.style.display = "none";
   menuView.style.display = "flex";
   formFrame.src = "";
-  guideModal.classList.remove("open");
-  guideFrame.src = "";
-  trelloOverlay.classList.remove("open");
-  btnGaps.style.display = "inline-block";
 };
 
 /* CLOCK */
 function updateClock(){
   const now = new Date();
 
-  const dateText = now.toLocaleDateString("en-US", {
-    timeZone: "America/New_York",
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    year: "numeric"
-  });
-
-  const timeText = now.toLocaleTimeString("en-US", {
-    timeZone: "America/New_York",
-    hour: "numeric",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: true
-  });
-
-  document.getElementById("clockDate").textContent = dateText;
-  document.getElementById("clockTime").textContent = timeText;
-}
-
-/* TRELLO RENDERING */
-function renderTrelloBoard(data){
-  const boardName = data?.name || "Trello Board";
-  trelloBoardTitle.textContent = boardName;
-
-  const lists = Array.isArray(data?.lists) ? data.lists.filter(list => !list.closed) : [];
-  const cards = Array.isArray(data?.cards) ? data.cards.filter(card => !card.closed) : [];
-  const members = Array.isArray(data?.members) ? data.members : [];
-  const customFields = Array.isArray(data?.customFields) ? data.customFields : [];
-
-  const memberMap = {};
-  for(const member of members){
-    memberMap[member.id] = member;
-  }
-
-  const customFieldMap = buildCustomFieldMap(customFields);
-
-  const cardsByList = {};
-  for(const card of cards){
-    if(!cardsByList[card.idList]) cardsByList[card.idList] = [];
-    cardsByList[card.idList].push(card);
-  }
-
-  trelloBoard.innerHTML = "";
-
-  if(lists.length === 0){
-    trelloBoard.innerHTML = `
-      <div class="trello-list">
-        <div class="trello-list-header">No visible lists</div>
-        <div class="trello-empty">This board did not return any open lists.</div>
-      </div>
-    `;
-    return;
-  }
-
-  for(const list of lists){
-    const listCards = cardsByList[list.id] || [];
-
-    const listEl = document.createElement("div");
-    listEl.className = "trello-list";
-
-    const headerEl = document.createElement("div");
-    headerEl.className = "trello-list-header";
-    headerEl.innerHTML = `
-      ${escapeHtml(list.name)}
-      <span class="trello-list-count">(${listCards.length})</span>
-    `;
-    listEl.appendChild(headerEl);
-
-    const cardsEl = document.createElement("div");
-    cardsEl.className = "trello-cards";
-
-    if(listCards.length === 0){
-      const emptyEl = document.createElement("div");
-      emptyEl.className = "trello-empty";
-      emptyEl.textContent = "No open cards in this list.";
-      cardsEl.appendChild(emptyEl);
-    } else {
-      for(const card of listCards){
-        const labelHtml = (card.labels || []).map(label => {
-          const bg = normalizeLabelColor(label.color);
-          const labelName = label.name ? escapeHtml(label.name) : "\u00A0";
-          return `<span class="trello-label" style="background:${bg};">${labelName}</span>`;
-        }).join("");
-
-        const coverUrl = getCardCover(card);
-
-        const badgeChips = [];
-        if(card.due){
-          badgeChips.push(`<span class="trello-chip">Due: ${escapeHtml(formatDate(card.due))}</span>`);
-        }
-        if(card.badges && card.badges.dueComplete){
-          badgeChips.push(`<span class="trello-chip">Due Complete</span>`);
-        }
-
-        let membersHtml = "";
-        if(Array.isArray(card.idMembers) && card.idMembers.length){
-          membersHtml = `
-            <div class="trello-section">
-              <div class="trello-section-title">Members</div>
-              <div class="trello-members">
-                ${card.idMembers.map(id => {
-                  const member = memberMap[id];
-                  const displayName = member?.fullName || member?.username || "Member";
-                  const initials = initialsFromName(displayName);
-                  return `<span class="trello-member" title="${escapeHtml(displayName)}">${escapeHtml(initials)}</span>`;
-                }).join("")}
-              </div>
-            </div>
-          `;
-        }
-
-        let customFieldsHtml = "";
-        if(Array.isArray(card.customFieldItems) && card.customFieldItems.length && customFields.length){
-          const itemMap = buildCardCustomFieldMap(card.customFieldItems);
-          const fieldBlocks = [];
-
-          for(const fieldDef of customFields){
-            const item = itemMap[fieldDef.id];
-            const value = getCustomFieldValue(item, fieldDef);
-            if(!value) continue;
-
-            fieldBlocks.push(`
-              <div class="trello-field">
-                <div class="trello-field-name">${escapeHtml(fieldDef.name || "Field")}</div>
-                <div class="trello-field-value" title="${escapeHtml(value)}">${escapeHtml(value)}</div>
-              </div>
-            `);
-          }
-
-          if(fieldBlocks.length){
-            customFieldsHtml = `
-              <div class="trello-fields-grid">
-                ${fieldBlocks.join("")}
-              </div>
-            `;
-          }
-        }
-
-        const descriptionHtml = card.desc ? `
-          <div class="trello-section">
-            <div class="trello-section-title">Description</div>
-            <div class="trello-card-desc">${escapeHtml(card.desc)}</div>
-          </div>
-        ` : "";
-
-        const labelsSectionHtml = labelHtml ? `
-          <div class="trello-section">
-            <div class="trello-section-title">Labels</div>
-            <div class="trello-labels">${labelHtml}</div>
-          </div>
-        ` : "";
-
-        const cardEl = document.createElement("div");
-        cardEl.className = "trello-card";
-        cardEl.innerHTML = `
-          ${coverUrl ? `<img class="trello-cover" src="${escapeHtml(coverUrl)}" alt="">` : ""}
-          <div class="trello-card-body">
-            <div class="trello-card-title">${escapeHtml(card.name || "Untitled Card")}</div>
-            ${labelsSectionHtml}
-            ${badgeChips.length ? `<div class="trello-meta">${badgeChips.join("")}</div>` : ""}
-            ${descriptionHtml}
-            ${customFieldsHtml}
-            ${membersHtml}
-            <div class="trello-card-links">
-              <a class="trello-card-link" href="${escapeHtml(card.shortUrl || trelloBoardUrl)}" target="_blank" rel="noopener noreferrer">Open card</a>
-            </div>
-          </div>
-        `;
-        cardsEl.appendChild(cardEl);
-      }
-    }
-
-    listEl.appendChild(cardsEl);
-    trelloBoard.appendChild(listEl);
-  }
-}
-
-async function loadTrelloBoard(){
-  showTrelloStatus("Loading Trello board...");
-  trelloBoard.innerHTML = "";
-
-  try{
-    const response = await fetch(trelloJsonUrl, {
-      method: "GET",
-      mode: "cors",
-      cache: "no-store"
+  document.getElementById("clockDate").textContent =
+    now.toLocaleDateString("en-US", {
+      timeZone:"America/New_York",
+      weekday:"long",
+      month:"long",
+      day:"numeric",
+      year:"numeric"
     });
 
-    if(!response.ok){
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const data = await response.json();
-    renderTrelloBoard(data);
-    clearTrelloStatus();
-    trelloLoadedOnce = true;
-  }catch(error){
-    trelloBoardTitle.textContent = "Trello Board";
-    trelloBoard.innerHTML = `
-      <div class="trello-list">
-        <div class="trello-list-header">Unable to load board</div>
-        <div class="trello-empty">
-          This custom overlay could not read the board data feed from Trello.
-        </div>
-      </div>
-    `;
-    showTrelloStatus("Could not load the public board data into the overlay.", true);
-    console.error("Trello overlay load failed:", error);
-  }
+  document.getElementById("clockTime").textContent =
+    now.toLocaleTimeString("en-US", {
+      timeZone:"America/New_York",
+      hour:"numeric",
+      minute:"2-digit",
+      second:"2-digit",
+      hour12:true
+    });
 }
-
-async function openTrelloOverlay(){
-  trelloOverlay.classList.add("open");
-  if(!trelloLoadedOnce){
-    await loadTrelloBoard();
-  }
-}
-
-trelloMenuButton.addEventListener("click", openTrelloOverlay);
-trelloFormButton.addEventListener("click", openTrelloOverlay);
-reloadTrelloButton.addEventListener("click", loadTrelloBoard);
-
-closeTrelloOverlayButton.addEventListener("click", ()=>{
-  trelloOverlay.classList.remove("open");
-});
-
-trelloOverlay.addEventListener("click", (event)=>{
-  if(event.target === trelloOverlay){
-    trelloOverlay.classList.remove("open");
-  }
-});
-
-document.addEventListener("keydown", (event)=>{
-  if(event.key === "Escape"){
-    guideModal.classList.remove("open");
-    trelloOverlay.classList.remove("open");
-  }
-});
 
 updateClock();
-setInterval(updateClock, 1000);
+setInterval(updateClock,1000);
 </script>
 
 </body>

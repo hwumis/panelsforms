@@ -6,254 +6,139 @@
 <title>Panels Quality Forms</title>
 
 <style>
-
 :root{
---header-bg:#1b2a36;
---page-bg:#f4f4f4;
---button-bg:#3a6ea5;
---button-hover:#2f5b89;
---home-bg:#d32f2f;
---home-hover:#b71c1c;
---guide-bg:#2e7d32;
---guide-hover:#256628;
---modal-bg:rgba(0,0,0,0.72);
+  --header-bg:#1b2a36;
+  --page-bg:#f4f4f4;
+  --button-bg:#3a6ea5;
+  --button-hover:#2f5b89;
+  --home-bg:#d32f2f;
+  --home-hover:#b71c1c;
 }
 
 *{box-sizing:border-box;}
 
 html,body{
-margin:0;
-height:100%;
-font-family:Arial, Helvetica, sans-serif;
-background:var(--page-bg);
-overflow:hidden;
+  margin:0;
+  height:100%;
+  font-family:Arial, Helvetica, sans-serif;
+  background:var(--page-bg);
+  overflow:hidden;
 }
 
 body{
-display:flex;
-flex-direction:column;
+  display:flex;
+  flex-direction:column;
 }
 
 /* HEADER */
 .header{
-display:grid;
-grid-template-columns:1fr auto 1fr;
-align-items:center;
-background:var(--header-bg);
-color:white;
-padding:20px 32px;
-gap:20px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  background:var(--header-bg);
+  color:white;
+  padding:20px 32px;
+  gap:20px;
 }
 
 .clock-wrap{
-display:flex;
-flex-direction:column;
-justify-self:start;
-line-height:1.15;
+  display:flex;
+  flex-direction:column;
+  justify-self:start;
 }
 
-.clock-date{
-font-size:20px;
-font-weight:700;
-}
-
-.clock-time{
-font-size:32px;
-font-weight:700;
-}
+.clock-date{font-size:20px;font-weight:700;}
+.clock-time{font-size:32px;font-weight:700;}
 
 .logo-wrap{
-justify-self:center;
-display:flex;
-align-items:center;
-justify-content:center;
+  justify-self:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .header-logo{
-max-height:70px;
-max-width:280px;
-width:auto;
-height:auto;
-display:block;
+  max-height:70px;
+  max-width:280px;
 }
 
 .title{
-justify-self:end;
-font-size:42px;
-font-weight:700;
-text-align:right;
+  justify-self:end;
+  font-size:42px;
+  font-weight:700;
 }
 
 /* MENU */
 .menu-view{
-flex:1;
-display:flex;
-flex-direction:column;
-align-items:center;
-padding:30px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:30px;
 }
 
 .button-container{
-width:min(1000px,90%);
-display:grid;
-gap:20px;
+  width:min(1000px,90%);
+  display:grid;
+  gap:20px;
 }
 
 .menu-button{
-min-height:100px;
-font-size:34px;
-border:none;
-border-radius:14px;
-background:var(--button-bg);
-color:white;
-font-weight:700;
-cursor:pointer;
+  min-height:100px;
+  font-size:34px;
+  border:none;
+  border-radius:14px;
+  background:var(--button-bg);
+  color:white;
+  font-weight:700;
+  cursor:pointer;
 }
 
 .menu-button:hover{
-background:var(--button-hover);
+  background:var(--button-hover);
 }
 
 /* FORM VIEW */
 .form-view{
-display:none;
-flex-direction:column;
-flex:1;
-padding:12px;
-gap:10px;
+  display:none;
+  flex-direction:column;
+  flex:1;
+  padding:0; /* FIXED */
 }
 
 .form-toolbar{
-display:flex;
-justify-content:space-between;
-flex-wrap:wrap;
-gap:10px;
-}
-
-.toolbar-right{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
+  padding:10px 12px 0 12px; /* FIXED */
+  margin:0;
 }
 
 .home-button{
-background:var(--home-bg);
-color:white;
-padding:12px 18px;
-border:none;
-border-radius:10px;
-font-size:20px;
-font-weight:700;
-cursor:pointer;
+  background:var(--home-bg);
+  color:white;
+  padding:12px 18px;
+  border:none;
+  border-radius:10px;
+  font-size:20px;
+  font-weight:700;
+  cursor:pointer;
 }
 
 .home-button:hover{
-background:var(--home-hover);
-}
-
-.guide-button{
-background:var(--guide-bg);
-color:white;
-padding:10px 14px;
-border:none;
-border-radius:8px;
-font-size:16px;
-font-weight:700;
-cursor:pointer;
-}
-
-.guide-button:hover{
-background:var(--guide-hover);
+  background:var(--home-hover);
 }
 
 .iframe-wrap{
-flex:1;
-border-radius:10px;
-overflow:hidden;
-background:white;
+  flex:1;
+  margin-top:8px; /* FIXED */
+  border-radius:10px;
+  overflow:hidden;
+  background:white;
 }
 
 .form-frame{
-width:100%;
-height:100%;
-border:none;
+  width:100%;
+  height:100%;
+  border:none;
 }
-
-/* MODAL */
-.modal{
-display:none;
-position:fixed;
-inset:0;
-z-index:9999;
-background:var(--modal-bg);
-padding:20px;
-}
-
-.modal.open{
-display:flex;
-}
-
-.modal-content{
-width:100%;
-height:100%;
-background:white;
-border-radius:14px;
-display:flex;
-flex-direction:column;
-overflow:hidden;
-}
-
-.modal-toolbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:12px 16px;
-background:#eee;
-}
-
-.modal-close{
-background:#ff7a00;
-color:white;
-border:none;
-border-radius:8px;
-padding:10px 14px;
-font-weight:700;
-cursor:pointer;
-}
-
-.modal-close:hover{
-background:#e06600;
-}
-
-.modal-frame{
-flex:1;
-border:none;
-}
-
-@media (max-width: 900px){
-.header{
-grid-template-columns:1fr;
-justify-items:center;
-text-align:center;
-}
-
-.clock-wrap,
-.logo-wrap,
-.title{
-justify-self:center;
-text-align:center;
-}
-
-.title{
-font-size:34px;
-}
-
-.header-logo{
-max-height:60px;
-max-width:220px;
-}
-}
-
 </style>
 </head>
 
@@ -266,214 +151,89 @@ max-width:220px;
   </div>
 
   <div class="logo-wrap">
-    <img src="logo3.png" alt="Logo" class="header-logo">
+    <img src="logo3.png" class="header-logo">
   </div>
 
   <div class="title">Panels Quality Forms</div>
 </div>
 
 <div id="menuView" class="menu-view">
+  <div class="button-container">
 
-<div class="button-container">
+    <button class="menu-button" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsBuild/formperma/DsANxGcHEdMFUn6xKEgIk3vXzqLdKq7kbSWIperZPVg">
+      Panels Build
+    </button>
 
-<button class="menu-button" data-type="build" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsBuild/formperma/DsANxGcHEdMFUn6xKEgIk3vXzqLdKq7kbSWIperZPVg">
-Panels Build
-</button>
+    <button class="menu-button" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsQualityFormsCornersOrderStart/formperma/vxYk_EDb4LTk8UpPtsIaD2RwPr68PI_-wDm-xS_YgM4">
+      Corners Order Start
+    </button>
 
-<button class="menu-button" data-type="corners" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsQualityFormsCornersOrderStart/formperma/vxYk_EDb4LTk8UpPtsIaD2RwPr68PI_-wDm-xS_YgM4">
-Corners Order Start
-</button>
+    <button class="menu-button" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsQualityFormsCornersHourly/formperma/kjx24aXaOGZkhWOw__OEkuEfeEJ6YLniqTdvHKZnkwE">
+      Corners Hourly
+    </button>
 
-<button class="menu-button" data-type="corners" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsQualityFormsCornersHourly/formperma/kjx24aXaOGZkhWOw__OEkuEfeEJ6YLniqTdvHKZnkwE">
-Corners Hourly
-</button>
+    <button class="menu-button" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsQualityFormCNC/formperma/w2DyynzQa9_CzrHmk6vaDaBJiGTUM-aFtHXmiABQzTY">
+      CNC
+    </button>
 
-<button class="menu-button" data-type="cnc" data-form="https://forms.zohopublic.com/sequoiaoutdoor1/form/PanelsQualityFormCNC/formperma/w2DyynzQa9_CzrHmk6vaDaBJiGTUM-aFtHXmiABQzTY">
-CNC
-</button>
-
-</div>
-
+  </div>
 </div>
 
 <div id="formView" class="form-view">
+  <div class="form-toolbar">
+    <button id="homeButton" class="home-button">Return to Menu</button>
+  </div>
 
-<div class="form-toolbar">
-<button id="homeButton" class="home-button">Return to Menu</button>
-
-<div class="toolbar-right">
-<button id="btnLamination" class="guide-button">Buildtable Defects: Lamination</button>
-<button id="btnAppearance" class="guide-button">Buildtable Defects: Appearance</button>
-<button id="btnDimensional" class="guide-button">Buildtable Defects: Dimensional</button>
-<button id="btnGaps" class="guide-button">Buildtable Defects: Gaps</button>
-</div>
-</div>
-
-<div class="iframe-wrap">
-<iframe id="formFrame" class="form-frame"></iframe>
-</div>
-
-</div>
-
-<div id="guideModal" class="modal">
-<div class="modal-content">
-
-<div class="modal-toolbar">
-<div id="modalTitle">Defect Guide</div>
-<button id="closeGuideButton" class="modal-close">Close Guide</button>
-</div>
-
-<iframe id="guideFrame" class="modal-frame"></iframe>
-
-</div>
+  <div class="iframe-wrap">
+    <iframe id="formFrame" class="form-frame"></iframe>
+  </div>
 </div>
 
 <script>
-
-/* GUIDE SETS */
-const guideSets = {
-
-build: {
-lamination: "https://hwumis.github.io/panelsforms/build-lamination.html",
-appearance: "https://hwumis.github.io/panelsforms/build-appearance.html",
-dimensional: "https://hwumis.github.io/panelsforms/build-dimensional.html",
-gaps: "https://hwumis.github.io/panelsforms/build-gaps.html"
-},
-
-corners: {
-lamination: "https://hwumis.github.io/panelsforms/corners-lamination.html",
-appearance: "https://hwumis.github.io/panelsforms/corners-appearance.html",
-dimensional: "https://hwumis.github.io/panelsforms/corners-dimensional.html",
-gaps: "https://hwumis.github.io/panelsforms/corners-gaps.html"
-},
-
-cnc: {
-lamination: "https://hwumis.github.io/panelsforms/cnc-lamination.html",
-appearance: "https://hwumis.github.io/panelsforms/cnc-appearance.html",
-dimensional: "https://hwumis.github.io/panelsforms/cnc-dimensional.html"
-}
-
-};
-
-/* ELEMENTS */
 const buttons = document.querySelectorAll(".menu-button");
 const formFrame = document.getElementById("formFrame");
 const formView = document.getElementById("formView");
 const menuView = document.getElementById("menuView");
 
-const guideFrame = document.getElementById("guideFrame");
-const guideModal = document.getElementById("guideModal");
-const modalTitle = document.getElementById("modalTitle");
-
-/* GUIDE BUTTONS */
-const btnLamination = document.getElementById("btnLamination");
-const btnAppearance = document.getElementById("btnAppearance");
-const btnDimensional = document.getElementById("btnDimensional");
-const btnGaps = document.getElementById("btnGaps");
-
-/* SET LINKS */
-function setGuideLinks(type){
-const set = guideSets[type];
-if(!set) return;
-
-btnLamination.dataset.guide = set.lamination;
-btnAppearance.dataset.guide = set.appearance;
-btnDimensional.dataset.guide = set.dimensional;
-
-if(set.gaps){
-btnGaps.dataset.guide = set.gaps;
-btnGaps.style.display = "inline-block";
-} else {
-btnGaps.dataset.guide = "";
-btnGaps.style.display = "none";
-}
-}
-
-/* SET LABELS */
-function setGuideLabels(type){
-let prefix = "Buildtable Defects";
-
-if(type === "corners"){
-prefix = "Corners Defects";
-}
-else if(type === "cnc"){
-prefix = "CNC Defects";
-}
-
-btnLamination.textContent = `${prefix}: Lamination`;
-btnAppearance.textContent = `${prefix}: Appearance`;
-btnDimensional.textContent = `${prefix}: Dimensional`;
-
-if(guideSets[type].gaps){
-btnGaps.textContent = `${prefix}: Gaps`;
-}
-}
-
-/* MENU CLICK */
 buttons.forEach(btn=>{
-btn.addEventListener("click",()=>{
-formFrame.src = btn.dataset.form;
-menuView.style.display = "none";
-formView.style.display = "flex";
-
-const type = btn.dataset.type;
-setGuideLinks(type);
-setGuideLabels(type);
-});
+  btn.addEventListener("click",()=>{
+    formFrame.src = btn.dataset.form;
+    menuView.style.display = "none";
+    formView.style.display = "flex";
+  });
 });
 
-/* GUIDE CLICK */
-document.querySelectorAll(".guide-button").forEach(btn=>{
-btn.addEventListener("click",()=>{
-guideFrame.src = btn.dataset.guide || "";
-modalTitle.textContent = btn.textContent;
-guideModal.classList.add("open");
-});
-});
-
-/* CLOSE */
-document.getElementById("closeGuideButton").onclick = ()=>{
-guideModal.classList.remove("open");
-guideFrame.src = "";
-};
-
-/* HOME */
 document.getElementById("homeButton").onclick = ()=>{
-formView.style.display = "none";
-menuView.style.display = "flex";
-formFrame.src = "";
-guideModal.classList.remove("open");
-guideFrame.src = "";
-btnGaps.style.display = "inline-block";
+  formView.style.display = "none";
+  menuView.style.display = "flex";
+  formFrame.src = "";
 };
 
-/* CLOCK - FORCE EASTERN TIME, 12-HOUR FORMAT */
+/* CLOCK */
 function updateClock(){
-const now = new Date();
+  const now = new Date();
 
-const dateText = now.toLocaleDateString("en-US", {
-timeZone: "America/New_York",
-weekday: "long",
-month: "long",
-day: "numeric",
-year: "numeric"
-});
+  document.getElementById("clockDate").textContent =
+    now.toLocaleDateString("en-US", {
+      timeZone:"America/New_York",
+      weekday:"long",
+      month:"long",
+      day:"numeric",
+      year:"numeric"
+    });
 
-const timeText = now.toLocaleTimeString("en-US", {
-timeZone: "America/New_York",
-hour: "numeric",
-minute: "2-digit",
-second: "2-digit",
-hour12: true
-});
-
-document.getElementById("clockDate").textContent = dateText;
-document.getElementById("clockTime").textContent = timeText;
+  document.getElementById("clockTime").textContent =
+    now.toLocaleTimeString("en-US", {
+      timeZone:"America/New_York",
+      hour:"numeric",
+      minute:"2-digit",
+      second:"2-digit",
+      hour12:true
+    });
 }
 
 updateClock();
-setInterval(updateClock, 1000);
-
+setInterval(updateClock,1000);
 </script>
 
 </body>
